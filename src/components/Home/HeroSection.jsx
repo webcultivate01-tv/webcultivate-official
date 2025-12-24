@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.webp";
 
 const HeroSection = () => {
@@ -9,7 +9,6 @@ const HeroSection = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-center">
-
           {/* Left Section */}
           <div className="order-2 lg:order-1 text-center lg:text-left">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-800 dark:text-gray-100 mb-4 sm:mb-5 md:mb-6 leading-tight tracking-tight">
@@ -19,9 +18,10 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 md:mb-9 leading-relaxed max-w-full lg:max-w-[90%] mx-auto lg:mx-0">
-              WebCultivate is your go-to freelancing partner for web design, development, and branding.
-              Start exploring our services today and build your digital future.
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 md:mb-9 leading-relaxed">
+              Webcultivate Software Solutions is a digital services company
+              specializing in web and app development, design, and branding
+              solutions for modern businesses.
             </p>
 
             <div className="flex gap-3 sm:gap-4 md:gap-5 flex-wrap justify-center lg:justify-start">
@@ -43,23 +43,52 @@ const HeroSection = () => {
 
           {/* Right Section */}
           <div className="relative h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] flex items-center justify-center order-1 lg:order-2">
-
             {/* Floating Icons - Now visible on mobile too */}
             <div className="flex absolute w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl items-center justify-center shadow-lg border border-gray-200 dark:border-slate-700 animate-float top-[10%] sm:top-[20%] left-[5%] sm:left-[10%]">
-              <svg className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <svg
+                className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
               </svg>
             </div>
 
             <div className="flex absolute w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl items-center justify-center shadow-lg border border-gray-200 dark:border-slate-700 animate-float-delay-1 top-[60%] sm:top-[60%] right-[5%] sm:right-[10%]">
-              <svg className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              <svg
+                className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary-light"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
               </svg>
             </div>
 
             <div className="flex absolute w-[45px] h-[45px] sm:w-[70px] sm:h-[70px] md:w-[80px] md:h-[80px] lg:w-[90px] lg:h-[90px] bg-white dark:bg-slate-800 rounded-xl sm:rounded-2xl items-center justify-center shadow-lg border border-gray-200 dark:border-slate-700 animate-float-delay-2 bottom-[10%] sm:bottom-[20%] left-[15%] sm:left-[20%]">
-              <svg className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              <svg
+                className="w-6 h-6 sm:w-10 sm:h-10 md:w-12 md:h-12 text-primary"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                />
               </svg>
             </div>
 
