@@ -1,128 +1,154 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import {
+  WebsiteDesignService,
+  WebsiteDevelopmentService,
+  GraphicDesignService,
+  DomainRegistrationService,
+  BusinessEmailService,
+  DigitalMarketingService
+} from './services';
 
-// Single Service Card Component
-const ServiceCard = ({ service, isExpanded, onClick }) => {
-  const descriptionRef = useRef(null);
-  const [maxHeight, setMaxHeight] = useState(0);
-
-  useEffect(() => {
-    if (isExpanded && descriptionRef.current) {
-      setMaxHeight(descriptionRef.current.scrollHeight);
-    } else {
-      setMaxHeight(0);
-    }
-  }, [isExpanded]);
-
-  return (
-    <div
-      onClick={onClick}
-      className="relative bg-white dark:bg-slate-800 p-8 sm:p-9 md:p-10 lg:p-11 rounded-2xl border border-gray-200 dark:border-slate-700 
-                 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 text-center cursor-pointer"
-    >
-      <div className="text-primary dark:text-primary-light mb-4 sm:mb-5 flex justify-center">
-        {service.icon}
-      </div>
-      <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-2 sm:mb-3">
-        {service.title}
-      </h3>
-
-      {/* Description */}
-      <div
-        ref={descriptionRef}
-        className="overflow-hidden transition-all duration-500 text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed"
-        style={{ maxHeight: `${maxHeight}px` }}
-      >
-        <p>{service.description}</p>
-      </div>
-    </div>
-  );
-};
-
-// Services Section
 const ServicesSection = () => {
-  const services = [
-    {
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-      ),
-      title: 'Website Designing',
-      description: 'Design stunning, responsive, and user-friendly websites tailored to your brand.',
-    },
-    {
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-      title: 'Website Development',
-      description: 'We build fast, secure, and scalable websites using modern web technologies.',
-    },
-    {
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      ),
-      title: 'Graphic Designing',
-      description: "Creative designs that visually communicate your brand's story and identity.",
-    },
-    {
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-        </svg>
-      ),
-      title: 'Domain Registration',
-      description: 'Register your perfect domain name and secure your online presence instantly.',
-    },
-    {
-  icon: (
-    <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m0 0v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8m18 0L12 13 3 8" />
-    </svg>
-  ),
-  title: 'Business Email',
-  description: 'Professional business email setup to enhance your brand credibility and communication.',
-},
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
 
-    {
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 14h18M3 18h18" />
-        </svg>
-      ),
-      title: 'Digital Marketing',
-      description: 'Boost your online presence, drive traffic, and increase sales with our marketing solutions.',
-    },
-  ];
-
-  const [expandedIndex, setExpandedIndex] = useState(null);
-  const toggleExpand = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
+  const titleVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-slate-900" id="services">
-      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-3 sm:mb-4">Our Services</h2>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
-            Comprehensive digital solutions tailored to your business needs
-          </p>
-        </div>
+    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden" id="services">
+      {/* Background Decorations */}
+      <motion.div 
+        className="absolute top-0 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl"
+        animate={{
+          x: [0, 100, 0],
+          y: [0, -50, 0]
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl"
+        animate={{
+          x: [0, -100, 0],
+          y: [0, 50, 0]
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: "linear"
+        }}
+      />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 md:gap-8 lg:gap-9">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              service={service}
-              isExpanded={expandedIndex === index}
-              onClick={() => toggleExpand(index)}
-            />
-          ))}
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 relative z-10">
+        <motion.div 
+          className="text-center mb-12 sm:mb-16 md:mb-20"
+          variants={titleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+        >
+          <motion.div
+            className="inline-block mb-4"
+            animate={{ rotate: [0, 5, -5, 0] }}
+            transition={{ duration: 4, repeat: Infinity }}
+          >
+            <span className="px-4 py-2 bg-gradient-to-r from-primary/10 to-secondary/10 text-primary dark:text-primary-light rounded-full text-sm font-semibold border border-primary/20">
+              Our Services
+            </span>
+          </motion.div>
+          
+          <motion.h2 
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4 sm:mb-6"
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+            }}
+            transition={{ duration: 5, repeat: Infinity }}
+          >
+            <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_100%]">
+              Digital Solutions
+            </span>{" "}
+            That Drive Results
+          </motion.h2>
+          
+          <motion.p 
+            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Comprehensive digital services tailored to transform your business and 
+            accelerate growth in the digital landscape of Amravati and beyond.
+          </motion.p>
+        </motion.div>
+
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+        >
+          <WebsiteDesignService />
+          <WebsiteDevelopmentService />
+          <GraphicDesignService />
+          <DomainRegistrationService />
+          <BusinessEmailService />
+          <DigitalMarketingService />
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div 
+          className="text-center mt-12 sm:mt-16 md:mt-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <a
+              href="/contact"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 group"
+            >
+              <span>Get Started with Your Project</span>
+              <motion.svg 
+                className="ml-2 w-5 h-5"
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </motion.svg>
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

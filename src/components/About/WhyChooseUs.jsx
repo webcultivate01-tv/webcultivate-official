@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const WhyChooseUs = () => {
   const reasons = [
@@ -35,36 +36,45 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-5">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-            Why Choose WebCultivate?
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
-            What sets us apart from the rest
-          </p>
+    <>
+      <Helmet>
+        <title>Why Choose WebCultivate Amravati | Expert Web Development Team</title>
+        <meta name="description" content="Choose WebCultivate Amravati for expert web development team, modern technology, affordable pricing, on-time delivery, and ongoing support. Best web development company in Amravati." />
+        <meta name="keywords" content="why choose WebCultivate, best web development Amravati, expert web developers Amravati, affordable web design Amravati, reliable software company" />
+        <meta property="og:title" content="Why Choose WebCultivate - Top Web Development Company in Amravati" />
+        <meta property="og:description" content="Discover 6 compelling reasons to choose WebCultivate as your web development partner in Amravati. Expert team, modern technology, and proven results." />
+      </Helmet>
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-5">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+              Why Choose WebCultivate?
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              What sets us apart from the rest
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {reasons.map((reason, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
+                <span className="text-5xl text-center font-extrabold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent mb-3 block">
+                  {reason.number}
+                </span>
+                <h3 className="text-xl text-center font-bold text-gray-800 dark:text-gray-100 mb-2">
+                  {reason.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  {reason.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <span className="text-5xl text-center font-extrabold bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent mb-3 block">
-                {reason.number}
-              </span>
-              <h3 className="text-xl text-center font-bold text-gray-800 dark:text-gray-100 mb-2">
-                {reason.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                {reason.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

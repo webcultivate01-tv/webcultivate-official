@@ -73,7 +73,7 @@ const Navbar = () => {
                 WebCultivate
               </span>
               <span className="text-sm sm:text-base md:text-lg lg:text-sm font-normal text-black">
-                Software Solution
+                Software Solutions
               </span>
             </div>
           </Link>

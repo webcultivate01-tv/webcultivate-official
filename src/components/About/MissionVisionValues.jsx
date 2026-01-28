@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const MissionVisionValues = () => {
   const cards = [
@@ -33,28 +34,37 @@ const MissionVisionValues = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-slate-800">
-      <div className="max-w-7xl mx-auto px-5">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-slate-900 p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-            >
-              <div className="flex items-center justify-center text-primary dark:text-primary-light mb-5">
-                {card.icon}
+    <>
+      <Helmet>
+        <title>Mission, Vision & Values - WebCultivate Amravati | Digital Excellence</title>
+        <meta name="description" content="Discover WebCultivate's mission to empower Amravati businesses with cutting-edge digital solutions. Our vision, values, and commitment to quality web development." />
+        <meta name="keywords" content="WebCultivate mission, digital solutions Amravati, web development values, software company vision Amravati, quality web services" />
+        <meta property="og:title" content="Mission, Vision & Values - WebCultivate Amravati" />
+        <meta property="og:description" content="Learn about WebCultivate's core values and mission to transform businesses in Amravati through innovative digital solutions and quality web development." />
+      </Helmet>
+      <section className="py-20 bg-gray-50 dark:bg-slate-800">
+        <div className="max-w-7xl mx-auto px-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {cards.map((card, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-slate-900 p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              >
+                <div className="flex items-center justify-center text-primary dark:text-primary-light mb-5">
+                  {card.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">
+                  {card.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {card.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">
-                {card.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                {card.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
