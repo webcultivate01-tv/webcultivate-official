@@ -39,10 +39,9 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Work Process", path: "/work-process" },
-    { name: "Testimonials", path: "/testimonials" },
+    { name: "Our Process", path: "/work-process" },
     { name: "Plans", path: "/pricing" },
-    // { name: 'Team', path: '/team' },
+    { name: "Careers", path: "/careers" },
     { name: "Contact Us", path: "/contact" },
   ];
 
@@ -98,39 +97,87 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile/Tablet Navigation Menu */}
-          <div
-            className={`lg:hidden fixed left-0 right-0 bg-white dark:bg-slate-900 shadow-2xl border-t border-gray-200 dark:border-slate-700 transition-all duration-300 ease-in-out z-40 ${
-              isMobileMenuOpen
-                ? "opacity-100 translate-y-0 visible top-[48px] sm:top-[52px] md:top-[56px]"
-                : "opacity-0 -translate-y-4 invisible top-[48px] sm:top-[52px] md:top-[56px]"
-            }`}
+          {/* Mobile/Tablet Navigation Menu - Right Sidebar */}
+{isMobileMenuOpen && (
+  <>
+    {/* Backdrop */}
+    <div
+      onClick={() => setIsMobileMenuOpen(false)}
+      className="
+        lg:hidden fixed inset-0 z-40
+        bg-black/40 backdrop-blur-sm
+        transition-opacity duration-500 ease-out
+      "
+    />
+
+    {/* Sidebar */}
+    <div
+      className={`
+        lg:hidden fixed top-0 right-0 z-50
+        w-80 max-w-[85vw] h-screen
+        bg-white dark:bg-slate-900
+        shadow-[0_20px_50px_rgba(0,0,0,0.35)]
+        transform transition-all duration-500 ease-out
+        ${isMobileMenuOpen
+          ? "translate-x-0 opacity-100 scale-100"
+          : "translate-x-full opacity-0 scale-95"}
+      `}
+    >
+      {/* Header */}
+      <div className="h-16 flex items-center justify-between px-5 border-b border-gray-200 dark:border-slate-700">
+        <div className="flex items-center gap-2">
+          <img src="/wlogo.png" className="w-8 h-8" />
+          <span className="font-bold text-lg">WebCultivate</span>
+        </div>
+
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Links */}
+      <div className="h-[calc(100vh-64px)] overflow-y-auto px-4 py-5 space-y-2">
+        {navLinks.map((link) => (
+          <Link
+            key={link.path}
+            to={link.path}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`
+              block px-4 py-3 rounded-xl font-medium
+              transition-all duration-300
+              ${
+                location.pathname === link.path
+                  ? "bg-primary/10 text-primary"
+                  : "hover:bg-gray-100 dark:hover:bg-slate-800"
+              }
+            `}
           >
-            <div className="px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 space-y-1 max-h-[calc(100vh-48px)] sm:max-h-[calc(100vh-52px)] md:max-h-[calc(100vh-56px)] overflow-y-auto">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`block px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg font-medium text-sm sm:text-base transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? "text-primary dark:text-primary-light bg-primary/10 dark:bg-primary/20"
-                      : "text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-slate-800"
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              {/* Mobile-only Get Started button */}
-              <Link
-                to="/contact"
-                className="block w-full text-center px-4 sm:px-6 py-2.5 sm:py-3 mt-3 sm:mt-4 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base text-white bg-gradient-to-r from-primary to-primary-dark shadow-lg shadow-primary/35 hover:shadow-xl hover:shadow-primary/45 transition-all duration-400"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
+            {link.name}
+          </Link>
+        ))}
+
+        {/* CTA */}
+        <Link
+          to="/contact"
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="
+            block w-full text-center mt-6 px-6 py-3 rounded-2xl
+            font-semibold text-white
+            bg-gradient-to-r from-primary to-primary-dark
+            shadow-lg hover:shadow-xl
+            transition-all duration-300
+          "
+        >
+          Get Started
+        </Link>
+      </div>
+    </div>
+  </>
+)}
+
 
           <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 flex-shrink-0">
             {/* Theme Toggle */}

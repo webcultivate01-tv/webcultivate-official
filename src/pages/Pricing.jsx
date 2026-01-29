@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PageHeader } from '../components/shared';
-import { PricingCards, PricingFAQ } from '../components/Pricing';
+import { PricingCards, PricingTrustSection, PricingFAQ } from '../components/Pricing';
 
 const Pricing = () => {
   return (
@@ -17,11 +17,8 @@ const Pricing = () => {
         <link rel="canonical" href="https://www.webcultivate.com/pricing" />
       </Helmet>
       <div className="pt-20">
-        <PageHeader
-          title="Our Pricing Plans"
-          subtitle="Choose the perfect plan for your business needs"
-        />
         <PricingCards />
+        <PricingTrustSection />
         <PricingFAQ />
       </div>
     </>

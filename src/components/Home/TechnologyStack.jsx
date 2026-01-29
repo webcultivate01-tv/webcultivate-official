@@ -52,11 +52,6 @@ const technologies = [
     description: "Minimal Node.js framework.",
     icon: "https://cdn.worldvectorlogo.com/logos/express-109.svg",
   },
-  {
-    name: "Flutter",
-    description: "One codebase for iOS & Android apps.",
-    icon: "https://cdn.worldvectorlogo.com/logos/flutter.svg",
-  },
 ];
 
 const container = {

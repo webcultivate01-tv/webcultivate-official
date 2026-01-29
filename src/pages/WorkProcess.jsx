@@ -7,6 +7,7 @@ import {
   ProjectTimeline, 
   ProcessCTA 
 } from '../components/WorkProcess';
+import Hero from '../components/WorkProcess/Hero';  
 
 const WorkProcess = () => {
   return (
@@ -22,10 +23,11 @@ const WorkProcess = () => {
         <link rel="canonical" href="https://www.webcultivate.com/work-process" />
       </Helmet>
       <div className="pt-20">
-        <PageHeader
+        {/* <PageHeader
           title="Our Work Process"
           subtitle="A streamlined approach to deliver exceptional digital solutions from concept to launch."
-        />
+        /> */}
+        <Hero />
         <ProcessTimeline />
         <MethodologySection />
         <ProjectTimeline />

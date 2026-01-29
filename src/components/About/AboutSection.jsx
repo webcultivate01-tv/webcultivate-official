@@ -1,52 +1,128 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const statCard = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: (i) => ({
+    opacity: 1,
+    scale: 1,
+    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+  }),
+};
 
 const AboutSection = () => {
   return (
     <>
       <Helmet>
-        <title>About WebCultivate - Leading Web Development Company in Amravati</title>
-        <meta name="description" content="WebCultivate is Amravati's premier web development company specializing in modern websites, digital solutions, and business growth. 10+ projects completed with expert team." />
-        <meta name="keywords" content="web development Amravati, website design Amravati, digital agency Amravati, software company Amravati, WebCultivate about" />
-        <meta property="og:title" content="About WebCultivate - Leading Web Development Company in Amravati" />
-        <meta property="og:description" content="Discover WebCultivate's journey as Amravati's trusted web development partner. Expert team, modern technology, and proven results for businesses." />
-        <meta property="og:type" content="website" />
+        <title>
+          About WebCultivate - Leading Web Development Company in Amravati
+        </title>
+        <meta
+          name="description"
+          content="WebCultivate is Amravati's premier web development company specializing in modern websites, digital solutions, and business growth."
+        />
+        <meta
+          name="keywords"
+          content="web development Amravati, website design Amravati, digital agency Amravati, software company Amravati"
+        />
         <link rel="canonical" href="https://www.webcultivate.com/about" />
       </Helmet>
-      <section className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-14 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4 sm:mb-5 md:mb-6">Let's Build Your Digital Presence Together</h2>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-3 sm:mb-4 leading-relaxed">
-                At WebCultivate, we specialize in crafting powerful, user-friendly, and visually 
-                stunning websites tailored to your unique business objectives. Whether you're a 
-                startup or an established brand, we bring your digital vision to life through 
-                modern design, robust development, and result-driven strategies.
+
+      <section className="relative py-20 sm:py-24 bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
+        {/* Soft Background Glow */}
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-400/10 rounded-full blur-[140px]" />
+
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+            {/* Left Content */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <span
+                className="inline-block mb-4 px-4 py-1.5 rounded-full text-sm font-semibold
+                text-blue-600 bg-blue-100/70 dark:text-blue-300 dark:bg-blue-900/40"
+              >
+                About WebCultivate
+              </span>
+
+              <h2
+                className="text-3xl sm:text-4xl md:text-5xl font-extrabold
+                text-slate-900 dark:text-white leading-tight mb-6"
+              >
+                Let’s Build Your
+                <span
+                  className="block bg-gradient-to-r from-blue-500 to-indigo-500
+                  bg-clip-text text-transparent"
+                >
+                  Digital Presence Together
+                </span>
+              </h2>
+
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-5 leading-relaxed max-w-2xl">
+                WebCultivate Software Solutions is a modern IT company based in
+                Amravati, delivering high-quality websites, scalable software
+                solutions, and user-focused digital experiences for startups and
+                growing businesses.
               </p>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-6 sm:mb-7 md:mb-8 leading-relaxed">
-                Our team combines creativity and technical expertise to deliver seamless experiences 
-                that captivate your audience and drive results. Let's collaborate and turn your ideas 
-                into a high-performing digital reality.
+
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl">
+                Our team blends creativity with technology to build reliable,
+                secure, and performance-driven digital products that help
+                businesses grow with confidence.
               </p>
-              <Link to="/about" className="inline-block px-6 sm:px-7 md:px-8 py-2.5 sm:py-3 md:py-3.5 text-sm sm:text-base rounded-xl font-semibold text-white bg-gradient-to-r from-primary to-primary-dark shadow-lg shadow-primary/35 hover:shadow-xl hover:shadow-primary/45 hover:-translate-y-1 transition-all duration-400">
-                Learn More About Us
+
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl
+                  font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-500
+                  shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40
+                  transition-all duration-300"
+              >
+                Learn More About Us →
               </Link>
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 order-1 lg:order-2">
-              <div className="bg-white dark:bg-slate-900 p-6 sm:p-7 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700">
-                <h3 className="text-3xl text-center sm:text-4xl font-bold text-primary mb-2">10+</h3>
-                <p className="text-sm sm:text-base text-center text-gray-600 dark:text-gray-400">Projects Completed</p>
-              </div>
-              <div className="bg-white dark:bg-slate-900 p-6 sm:p-7 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700">
-                <h3 className="text-3xl sm:text-4xl text-center font-bold text-primary mb-2">5+</h3>
-                <p className="text-sm sm:text-base text-center text-gray-600 dark:text-gray-400">Happy Clients</p>
-              </div>
-              <div className="bg-white dark:bg-slate-900 p-6 sm:p-7 md:p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700">
-                <h3 className="text-3xl sm:text-4xl text-center font-bold text-primary mb-2">2+</h3>
-                <p className="text-sm sm:text-base text-center text-gray-600 dark:text-gray-400">Years Experience</p>
-              </div>
+            </motion.div>
+
+            {/* Right Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                { value: "20+", label: "Projects Completed" },
+                { value: "10+", label: "Happy Clients" },
+                { value: "2+", label: "Years Experience" },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  custom={i}
+                  variants={statCard}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="bg-white/80 dark:bg-slate-900/80 backdrop-blur
+                    border border-slate-200 dark:border-slate-700
+                    rounded-2xl p-6 text-center shadow-lg"
+                >
+                  <h3 className="text-3xl sm:text-4xl font-extrabold text-blue-600 mb-1">
+                    {stat.value}
+                  </h3>
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>

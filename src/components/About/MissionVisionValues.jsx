@@ -1,65 +1,125 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.15, duration: 0.7, ease: "easeOut" },
+  }),
+};
 
 const MissionVisionValues = () => {
   const cards = [
     {
-      title: 'Our Mission',
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      description: 'To empower businesses of all sizes with cutting-edge digital solutions that drive growth, enhance user experience, and build lasting online success.'
+      title: "Our Mission",
+      image: "./mission.jpg",
+      description:
+        "To empower businesses with high-quality digital solutions that drive growth, improve user experience, and build long-term online success.",
     },
     {
-      title: 'Our Vision',
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-        </svg>
-      ),
-      description: 'To become the leading digital partner for brands worldwide, known for innovation, quality, and transformative web solutions.'
+      title: "Our Vision",
+      image:
+        "./vision.jpg",
+      description:
+        "To become a trusted digital partner for businesses worldwide, known for innovation, performance, and reliable technology solutions.",
     },
     {
-      title: 'Our Values',
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-        </svg>
-      ),
-      description: 'Quality, creativity, integrity, and client satisfaction are at the heart of everything we do at WebCultivate.'
-    }
+      title: "Our Values",
+      image:
+        "./values.jpg",
+      description:
+        "We believe in quality, transparency, innovation, and client satisfaction—values that guide every project at WebCultivate.",
+    },
   ];
 
   return (
     <>
       <Helmet>
-        <title>Mission, Vision & Values - WebCultivate Amravati | Digital Excellence</title>
-        <meta name="description" content="Discover WebCultivate's mission to empower Amravati businesses with cutting-edge digital solutions. Our vision, values, and commitment to quality web development." />
-        <meta name="keywords" content="WebCultivate mission, digital solutions Amravati, web development values, software company vision Amravati, quality web services" />
-        <meta property="og:title" content="Mission, Vision & Values - WebCultivate Amravati" />
-        <meta property="og:description" content="Learn about WebCultivate's core values and mission to transform businesses in Amravati through innovative digital solutions and quality web development." />
+        <title>Mission, Vision & Values - WebCultivate Amravati</title>
+        <meta
+          name="description"
+          content="Explore WebCultivate Software Solutions’ mission, vision, and values. We empower businesses in Amravati with modern, scalable digital solutions."
+        />
+        <meta
+          name="keywords"
+          content="WebCultivate mission, IT company Amravati, web development values, software solutions vision"
+        />
       </Helmet>
-      <section className="py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto px-5">
+
+      <section className="relative py-24 bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-[140px]" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-400/10 rounded-full blur-[140px]" />
+
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
+              Our Mission, Vision & Values
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300">
+              The principles that define how WebCultivate Software Solutions
+              builds trusted, high-impact digital products.
+            </p>
+          </motion.div>
+
+          {/* Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {cards.map((card, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-slate-900 p-10 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
-              >
-                <div className="flex items-center justify-center text-primary dark:text-primary-light mb-5">
-                  {card.icon}
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-3">
-                  {card.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  {card.description}
-                </p>
-              </div>
+<motion.div
+  key={index}
+  custom={index}
+  variants={fadeUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  className="group relative bg-white/70 dark:bg-slate-900/70
+    backdrop-blur-xl rounded-3xl border border-slate-200
+    dark:border-slate-700 shadow-lg hover:shadow-2xl
+    transition-all duration-300 overflow-hidden"
+>
+  {/* Image Section */}
+  <div className="relative h-44">
+    <img
+      src={card.image}
+      alt={card.title}
+      className="w-full h-full object-cover transition-transform
+        duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent" />
+
+    {/* Floating Badge */}
+    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2
+      w-14 h-14 rounded-2xl bg-white dark:bg-slate-800
+      flex items-center justify-center shadow-lg border
+      border-slate-200 dark:border-slate-700">
+      <span className="text-xl font-extrabold
+        bg-gradient-to-r from-blue-500 to-indigo-500
+        bg-clip-text text-transparent">
+        {index + 1}
+      </span>
+    </div>
+  </div>
+
+  {/* Content */}
+  <div className="pt-12 px-8 pb-8 text-center">
+    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+      {card.title}
+    </h3>
+    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+      {card.description}
+    </p>
+  </div>
+</motion.div>
             ))}
           </div>
         </div>

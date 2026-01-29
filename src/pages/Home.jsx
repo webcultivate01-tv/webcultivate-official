@@ -9,6 +9,9 @@ import {
   CTASection,
   TechnologyStack
 } from '../components/Home';
+import FAQSection from '../components/Home/FAQ';
+import TestimonialsCarousel from '../components/Home/Testimonial';
+import NewsletterSection from '../components/Home/NewsLetter';  
 
 
 const Home = () => {
@@ -31,6 +34,9 @@ const Home = () => {
         {/* <ProjectsSection /> */}
         <TechnologyStack />
         <WorkProcessPreview />
+        <FAQSection />
+        <TestimonialsCarousel />  
+        <NewsletterSection /> 
         <CTASection />
       </div>
     </>

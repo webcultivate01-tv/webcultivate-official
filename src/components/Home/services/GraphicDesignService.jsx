@@ -8,8 +8,7 @@ const GraphicDesignService = () => {
       className="group relative bg-gradient-to-br from-white to-gray-50 dark:from-slate-800 dark:to-slate-900 p-8 rounded-3xl border border-gray-200 dark:border-slate-700 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden"
       whileHover={{ y: -10, scale: 1.02 }}
       initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.3 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -60,12 +59,22 @@ const GraphicDesignService = () => {
         </li>
       </ul>
 
-      <Link
-        to="/contact"
-        className="block w-full text-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-purple-600/25 transition-all duration-300 group-hover:scale-105"
-      >
-        Get Quote
-      </Link>
+      <div className="flex gap-3 relative z-10">
+        <Link
+          to="/services/graphic-design"
+          className="flex-1 text-center px-4 py-3 border-2 border-purple-600 text-purple-600 dark:text-purple-400 font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition-all duration-300 cursor-pointer"
+          style={{ pointerEvents: 'auto' }}
+        >
+          Learn More
+        </Link>
+        <Link
+          to="/contact"
+          className="flex-1 text-center px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-purple-600/25 transition-all duration-300 cursor-pointer"
+          style={{ pointerEvents: 'auto' }}
+        >
+          Get Quote
+        </Link>
+      </div>
     </motion.div>
   );
 };

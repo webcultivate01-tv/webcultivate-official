@@ -9,6 +9,15 @@ import Testimonials from "./pages/Testimonials";
 import Pricing from "./pages/Pricing";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
+import Career from "./pages/Career";
+
+// Service Pages
+import WebsiteDesign from "./pages/services/WebsiteDesign";
+import WebsiteDevelopment from "./pages/services/WebsiteDevelopment";
+import GraphicDesign from "./pages/services/GraphicDesign";
+import DigitalMarketing from "./pages/services/DigitalMarketing";
+import DomainRegistration from "./pages/services/DomainRegistration";
+import BusinessEmail from "./pages/services/BusinessEmail";
 
 const App = () => {
   return (
@@ -21,8 +30,16 @@ const App = () => {
           <Route path="work-process" element={<WorkProcess />} />
           <Route path="testimonials" element={<Testimonials />} />
           <Route path="pricing" element={<Pricing />} />
-          {/* <Route path="team" element={<Team />} /> */}
+          <Route path="careers" element={<Career />} />
           <Route path="contact" element={<Contact />} />
+          
+          {/* Service Routes */}
+          <Route path="services/website-design" element={<WebsiteDesign />} />
+          <Route path="services/website-development" element={<WebsiteDevelopment />} />
+          <Route path="services/graphic-design" element={<GraphicDesign />} />
+          <Route path="services/digital-marketing" element={<DigitalMarketing />} />
+          <Route path="services/domain-registration" element={<DomainRegistration />} />
+          <Route path="services/business-email" element={<BusinessEmail />} />
         </Route>
       </Routes>
     </Router>
