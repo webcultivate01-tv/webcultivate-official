@@ -10,6 +10,10 @@ import Pricing from "./pages/Pricing";
 import Team from "./pages/Team";
 import Contact from "./pages/Contact";
 import Career from "./pages/Career";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 // Service Pages
 import WebsiteDesign from "./pages/services/WebsiteDesign";
@@ -32,6 +36,10 @@ const App = () => {
           <Route path="pricing" element={<Pricing />} />
           <Route path="careers" element={<Career />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="terms-conditions" element={<TermsConditions />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="blog/:slug" element={<BlogPost />} />
           
           {/* Service Routes */}
           <Route path="services/website-design" element={<WebsiteDesign />} />
