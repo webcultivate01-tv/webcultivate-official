@@ -6,5 +6,15 @@ export default defineConfig({
   plugins: [react()],
   server: {
     historyApiFallback: true
-  }
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+  base: './',
 })
