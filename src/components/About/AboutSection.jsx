@@ -64,45 +64,44 @@ const AboutSection = () => {
                 className="text-3xl sm:text-4xl md:text-5xl font-extrabold
                 text-slate-900 dark:text-white leading-tight mb-6"
               >
-                Let’s Build Your
+                Turn Visitors Into
                 <span
                   className="block bg-gradient-to-r from-blue-500 to-indigo-500
                   bg-clip-text text-transparent"
                 >
-                  Digital Presence Together
+                  Paying Clients
                 </span>
               </h2>
 
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-5 leading-relaxed max-w-2xl">
-                WebCultivate Software Solutions is a modern IT company based in
-                Amravati, delivering high-quality websites, scalable software
-                solutions, and user-focused digital experiences for startups and
-                growing businesses.
+                WebCultivate Software Solutions is Amravati's trusted digital
+                partner — building websites and software that don't just look
+                great, but actively convert visitors into paying customers.
               </p>
 
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed max-w-2xl">
-                Our team blends creativity with technology to build reliable,
-                secure, and performance-driven digital products that help
-                businesses grow with confidence.
+                With 2+ years of experience and 20+ successful projects, we know
+                exactly what it takes to grow your business online — fast,
+                reliably, and affordably.
               </p>
 
               <Link
-                to="/about"
+                to="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3 rounded-xl
                   font-semibold text-white bg-gradient-to-r from-blue-500 to-indigo-500
                   shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40
                   transition-all duration-300"
               >
-                Learn More About Us →
+                Get a Free Consultation →
               </Link>
             </motion.div>
 
             {/* Right Stats */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
-                { value: "20+", label: "Projects Completed" },
-                { value: "10+", label: "Happy Clients" },
-                { value: "2+", label: "Years Experience" },
+                { value: "20+", label: "Happy Clients" },
+                { value: "2+", label: "Projects Completed" },
+                { value: "24/7", label: "Support Available" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}

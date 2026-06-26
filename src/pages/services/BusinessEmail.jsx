@@ -121,7 +121,7 @@ const BusinessEmail = () => {
               transition={{ duration: 1, delay: 0.3 }}
             >
               <img
-                src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=600&fit=crop&crop=center"
+                src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=1200&h=600&fit=crop&crop=center"
                 alt="Business Email Services"
                 className="w-full h-96 object-cover"
               />

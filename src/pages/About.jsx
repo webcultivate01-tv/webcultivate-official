@@ -1,16 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PageHeader } from '../components/shared';
-import { AboutSection, MissionVisionValues, WhyChooseUs } from '../components/About';
-import TrustedClient from '../components/About/TrustedClient';
-import Hero from '../components/About/Hero'
+import { MissionVisionValues, WhyChooseUs } from '../components/About';
+import Hero from '../components/About/Hero';
 
 const About = () => {
   return (
     <>
       <Helmet>
         <title>About WebCultivate - Premier Web Development Company in Amravati | Digital Solutions</title>
-        <meta name="description" content="WebCultivate is Amravati's leading web development company offering expert digital solutions, modern web design, and innovative software development services. Trusted by 5+ clients with 10+ successful projects." />
+        <meta name="description" content="WebCultivate is Amravati's leading web development company offering expert digital solutions, modern web design, and innovative software development services. Trusted by 25+ clients with 50+ successful projects." />
         <meta name="keywords" content="about WebCultivate, web development company Amravati, digital solutions Amravati, software development Amravati, web design services, IT company Amravati" />
         <meta property="og:title" content="About WebCultivate - Premier Web Development Company in Amravati" />
         <meta property="og:description" content="Discover WebCultivate's journey as Amravati's trusted digital partner. Expert team, proven results, and comprehensive web development services for growing businesses." />
@@ -48,15 +46,10 @@ const About = () => {
           })}
         </script>
       </Helmet>
+
       <div className="pt-20 bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-        {/* <PageHeader
-          title="About WebCultivate"
-          subtitle="Your Trusted Partner in Digital Transformation"
-        /> */}
         <Hero />
-        <AboutSection />
         <MissionVisionValues />
-        <TrustedClient/>
         <WhyChooseUs />
       </div>
     </>
@@ -64,4 +57,3 @@ const About = () => {
 };
 
 export default About;
-

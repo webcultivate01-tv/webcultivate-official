@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ContactInfo, ContactForm } from '../components/Contact';
+import { SITE_STATS } from '../constants/stats';
 
 const Contact = () => {
   return (
@@ -17,180 +18,141 @@ const Contact = () => {
         <link rel="canonical" href="https://www.webcultivate.com/contact" />
       </Helmet>
       
-      <div className="pt-20 bg-gradient-to-br from-blue-50 via-white to-purple-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <div className="pt-20 bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+
         {/* Hero Section */}
-        <section className="py-16 sm:py-20 md:py-24 relative overflow-hidden">
-          <motion.div 
-            className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              rotate: [0, 180, 360]
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-          <motion.div 
-            className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.3, 1],
-              rotate: [360, 180, 0]
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
+        <section className="relative pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 relative z-10">
-            <motion.div 
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8 }}
-            >
+          {/* Decorative grid */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f020_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f020_1px,transparent_1px)] bg-[size:48px_48px] dark:bg-[linear-gradient(to_right,#1e293b40_1px,transparent_1px),linear-gradient(to_bottom,#1e293b40_1px,transparent_1px)] pointer-events-none" />
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-indigo-400/10 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+              {/* Left — Text */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
               >
-                <motion.div
-                  className="inline-block mb-4"
-                  animate={{ rotate: [0, 5, -5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  <span className="px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 dark:text-blue-400 rounded-full text-sm font-semibold border border-blue-500/20">
-                    Get In Touch
-                  </span>
-                </motion.div>
+                {/* Badge */}
+                <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full text-sm font-semibold text-blue-600 bg-blue-100/80 border border-blue-200/60 dark:text-blue-300 dark:bg-blue-900/40 dark:border-blue-700/40">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                  We respond within 24 hours
+                </div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-gray-100 mb-6 leading-tight">
-                  Let's Bring Your{" "}
-                  <motion.span 
-                    className="bg-gradient-to-r from-primary via-secondary to-purple-600 bg-clip-text text-transparent bg-[length:200%_100%]"
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }}
-                  >
-                    Vision to Life
-                  </motion.span>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-5">
+                  Let&apos;s Build{' '}
+                  <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent">
+                    Something Great
+                  </span>
+                  <br />Together.
                 </h1>
 
-                <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                  Ready to transform your business with cutting-edge web solutions? 
-                  Our team in Amravati is here to help you succeed in the digital world.
+                <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 max-w-lg">
+                  Have a project in mind or just want to explore what&apos;s possible? Reach out — our team in Amravati is ready to turn your vision into a digital reality.
                 </p>
 
-                {/* Quick Contact Stats */}
-                <div className="grid grid-cols-2 gap-6 mb-8">
-                  <motion.div 
-                    className="text-center lg:text-left"
-                    whileHover={{ scale: 1.05 }}
+                {/* Contact info chips */}
+                <div className="flex flex-col sm:flex-row gap-3 mb-8">
+                  <a
+                    href="tel:+917821096438"
+                    className="flex items-center gap-3 px-5 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-300 group"
                   >
-                    <motion.div 
-                      className="text-2xl sm:text-3xl font-bold text-primary mb-1"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      24hrs
-                    </motion.div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Response Time</div>
-                  </motion.div>
-                  <motion.div 
-                    className="text-center lg:text-left"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <motion.div 
-                      className="text-2xl sm:text-3xl font-bold text-primary mb-1"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                    >
-                      Free
-                    </motion.div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">Consultation</div>
-                  </motion.div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <a
-                      href="tel:+917821096438"
-                      className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300"
-                    >
-                      <svg className="mr-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-900/40 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      <span>Call Now</span>
-                    </a>
-                  </motion.div>
-                  
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-400 dark:text-slate-500">Call us</p>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-white group-hover:text-blue-600 transition-colors">+91 7821096438</p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="mailto:info@webcultivate.com"
+                    className="flex items-center gap-3 px-5 py-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm hover:border-blue-400 hover:shadow-md transition-all duration-300 group"
                   >
-                    <a
-                      href="#contact-form"
-                      className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-primary text-primary dark:text-primary-light font-semibold rounded-2xl hover:bg-primary hover:text-white transition-all duration-300"
-                    >
-                      Send Message
-                    </a>
-                  </motion.div>
+                    <div className="w-9 h-9 rounded-lg bg-blue-50 dark:bg-blue-900/40 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-xs text-slate-400 dark:text-slate-500">Email us</p>
+                      <p className="text-sm font-semibold text-slate-800 dark:text-white group-hover:text-blue-600 transition-colors">info@webcultivate.com</p>
+                    </div>
+                  </a>
+                </div>
+
+                {/* CTA buttons */}
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="#contact-form"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    Send a Message
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </a>
+                  <a
+                    href="tel:+917821096438"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-semibold rounded-xl hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 shadow-sm"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                    Call Now
+                  </a>
                 </div>
               </motion.div>
 
-              <motion.div 
-                className="relative"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0.4 }}
+              {/* Right — Info cards */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="flex flex-col gap-4"
               >
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
+                {/* Main image */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <img
-                    src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=600&h=400&fit=crop&crop=center"
-                    alt="Contact us"
-                    className="w-full max-w-lg mx-auto h-80 object-cover rounded-3xl shadow-2xl"
+                    src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=700&h=380&fit=crop&crop=center"
+                    alt="Contact WebCultivate"
+                    className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-3xl" />
-                </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
+                  <div className="absolute bottom-4 left-5 right-5">
+                    <p className="text-white font-semibold text-lg">Based in Amravati, Maharashtra</p>
+                    <p className="text-slate-300 text-sm">Serving clients across India &amp; beyond</p>
+                  </div>
+                </div>
 
-                <motion.div 
-                  className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg"
-                  animate={{ 
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ 
-                    rotate: { duration: 10, repeat: Infinity, ease: "linear" },
-                    scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-                  }}
-                >
-                  <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                  </svg>
-                </motion.div>
+                {/* 3 stat cards */}
+                <div className="grid grid-cols-3 gap-3">
+                  {SITE_STATS.map((s, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                      className="bg-white/80 dark:bg-slate-800/80 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-center shadow-sm"
+                    >
+                      <p className="text-xl font-extrabold text-blue-600 dark:text-blue-400">{s.value}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{s.label}</p>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
-            </motion.div>
+
+            </div>
           </div>
         </section>
 
         {/* Contact Section */}
-        <section id="contact-form" className="py-16 sm:py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <section id="contact-form" className="py-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
               <ContactInfo />
               <ContactForm />
             </div>

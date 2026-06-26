@@ -19,7 +19,7 @@ const BusinessEmailService = () => {
         transition={{ duration: 0.3 }}
       >
         <img
-          src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=400&h=250&fit=crop&crop=center"
+          src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=400&h=250&fit=crop&crop=center"
           alt="Business Email"
           className="w-full h-48 object-cover"
         />

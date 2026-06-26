@@ -212,8 +212,8 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Blog Post Not Found</h1>
-          <Link to="/blog" className="text-blue-600 hover:text-blue-700">← Back to Blog</Link>
+          <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Blog Post Not Found</h1>
+          <Link to="/blog" className="text-primary hover:text-primary-dark font-semibold">← Back to Blog</Link>
         </div>
       </div>
     );
@@ -232,7 +232,7 @@ const BlogPost = () => {
         <meta property="og:type" content="article" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
         <article className="pt-24 pb-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Back Button */}
@@ -244,7 +244,7 @@ const BlogPost = () => {
             >
               <Link
                 to="/blog"
-                className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                className="inline-flex items-center gap-1.5 text-primary dark:text-primary-light hover:text-primary-dark transition-colors font-medium"
               >
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -261,7 +261,7 @@ const BlogPost = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="mb-6">
-                <span className="px-3 py-1 bg-blue-600 text-white text-sm font-semibold rounded-full">
+                <span className="px-3 py-1 bg-primary text-white text-sm font-semibold rounded-full shadow-md shadow-primary/30">
                   {post.category}
                 </span>
               </div>
@@ -270,7 +270,7 @@ const BlogPost = () => {
                 {post.title}
               </h1>
               
-              <div className="flex items-center text-gray-600 dark:text-gray-400 mb-8">
+              <div className="flex items-center text-slate-500 dark:text-slate-400 mb-8">
                 <span>{post.date}</span>
                 <span className="mx-3">•</span>
                 <span>{post.readTime}</span>
@@ -295,7 +295,7 @@ const BlogPost = () => {
 
             {/* Article Content */}
             <motion.div
-              className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-blue-600 dark:prose-a:text-blue-400"
+              className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-slate-900 dark:prose-headings:text-white prose-p:text-slate-700 dark:prose-p:text-slate-300 prose-a:text-primary dark:prose-a:text-primary-light prose-li:text-slate-700 dark:prose-li:text-slate-300"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -304,18 +304,18 @@ const BlogPost = () => {
 
             {/* CTA Section */}
             <motion.div
-              className="mt-16 p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl text-white text-center"
+              className="mt-16 p-8 bg-gradient-to-r from-primary to-secondary rounded-3xl text-white text-center shadow-2xl shadow-primary/30"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-              <p className="text-blue-100 mb-6">
+              <p className="text-blue-100 mb-6 max-w-lg mx-auto">
                 Let WebCultivate help your Amravati business succeed online with our expert services.
               </p>
               <Link
                 to="/contact"
-                className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-2xl hover:bg-gray-100 transition-colors"
+                className="inline-block px-8 py-3 bg-white text-primary font-semibold rounded-2xl hover:bg-blue-50 transition-colors shadow-lg"
               >
                 Contact Us Today
               </Link>

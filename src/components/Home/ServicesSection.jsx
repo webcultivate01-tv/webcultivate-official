@@ -1,11 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
-  WebsiteDesignService,
   WebsiteDevelopmentService,
-  GraphicDesignService,
-  DomainRegistrationService,
-  BusinessEmailService,
+  AppDevelopmentService,
   DigitalMarketingService
 } from './services';
 
@@ -105,49 +103,38 @@ const ServicesSection = () => {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <WebsiteDesignService />
           <WebsiteDevelopmentService />
-          <GraphicDesignService />
-          <DomainRegistrationService />
-          <BusinessEmailService />
+          <AppDevelopmentService />
           <DigitalMarketingService />
         </motion.div>
 
-        {/* Call to Action */}
-        <motion.div 
-          className="text-center mt-12 sm:mt-16 md:mt-20"
-          initial={{ opacity: 0, y: 30 }}
+        {/* View More Services */}
+        <motion.div
+          className="text-center mt-10 sm:mt-12"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <a
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 group"
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl font-semibold border-2 border-primary text-primary dark:text-primary-light hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300 shadow-sm hover:shadow-lg hover:shadow-primary/25"
             >
-              <span>Get Started with Your Project</span>
-              <motion.svg 
-                className="ml-2 w-5 h-5"
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke="currentColor"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
+              View More Services
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </motion.svg>
-            </a>
+              </svg>
+            </Link>
           </motion.div>
         </motion.div>
+
+
       </div>
     </section>
   );

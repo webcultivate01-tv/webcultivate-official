@@ -11,7 +11,7 @@ const WebsiteDevelopmentService = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.1 }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       <motion.div
         className="relative mb-6 overflow-hidden rounded-2xl"
@@ -27,7 +27,7 @@ const WebsiteDevelopmentService = () => {
       </motion.div>
 
       <motion.div
-        className="text-secondary dark:text-secondary-light mb-4 flex justify-center"
+        className="text-primary dark:text-primary-light mb-4 flex justify-center"
         animate={{ scale: [1, 1.1, 1] }}
         transition={{ duration: 3, repeat: Infinity }}
       >
@@ -57,15 +57,15 @@ const WebsiteDevelopmentService = () => {
 
       <ul className="space-y-2 mb-6">
         <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <span className="w-2 h-2 bg-secondary rounded-full mr-3"></span>
+          <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
           React & Next.js
         </li>
         <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <span className="w-2 h-2 bg-secondary rounded-full mr-3"></span>
+          <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
           Fast Performance
         </li>
         <li className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <span className="w-2 h-2 bg-secondary rounded-full mr-3"></span>
+          <span className="w-2 h-2 bg-primary rounded-full mr-3"></span>
           SEO Optimized
         </li>
       </ul>
@@ -73,7 +73,7 @@ const WebsiteDevelopmentService = () => {
       <div className="flex gap-3 relative z-10">
         <Link
           to="/services/website-development"
-          className="flex-1 text-center px-4 py-3 border-2 border-secondary text-secondary dark:text-secondary-light font-semibold rounded-xl hover:bg-secondary hover:text-white transition-all duration-300 cursor-pointer"
+          className="flex-1 text-center px-4 py-3 border-2 border-primary text-primary dark:text-primary-light font-semibold rounded-xl hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer"
           style={{ pointerEvents: 'auto' }}
         >
           Learn More

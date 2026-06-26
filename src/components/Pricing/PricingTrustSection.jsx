@@ -57,10 +57,10 @@ const PricingTrustSection = () => {
   ];
 
   const stats = [
-    { number: "10+", label: "Happy Clients" },
-    { number: "20+", label: "Projects Completed" },
-    { number: "2+", label: "Years Experience" },
-    { number: "24/7", label: "Support Available" }
+    { number: "25+", label: "Happy Clients" },
+    { number: "50+", label: "Projects Completed" },
+    { number: "24/7", label: "Support Available" },
+    { number: "100%", label: "Satisfaction Rate" }
   ];
 
   const containerVariants = {

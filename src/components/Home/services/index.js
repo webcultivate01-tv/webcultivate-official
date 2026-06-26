@@ -4,3 +4,6 @@ export { default as GraphicDesignService } from './GraphicDesignService';
 export { default as DomainRegistrationService } from './DomainRegistrationService';
 export { default as BusinessEmailService } from './BusinessEmailService';
 export { default as DigitalMarketingService } from './DigitalMarketingService';
+export { default as SocialMediaService } from './SocialMediaService';
+export { default as AIAutomationService } from './AIAutomationService';
+export { default as AppDevelopmentService } from './AppDevelopmentService';

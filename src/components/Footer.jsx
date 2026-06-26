@@ -26,12 +26,14 @@ const Footer = () => {
                 alt="WebCultivate Logo"
                 className="w-10 h-10"
               />
-              <h3 className="text-xl font-bold tracking-tight">
-                <span className="text-blue-600">Web</span>
-                <span className="text-slate-800 dark:text-white">
-                  Cultivate
+              <div className="flex flex-col">
+                <span className="font-bold text-lg leading-tight bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
+                  WebCultivate
                 </span>
-              </h3>
+                <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                  Software Solutions
+                </span>
+              </div>
             </div>
 
             <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300 max-w-sm text-center sm:text-left">
@@ -82,16 +84,19 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               {[
                 { name: "Home", path: "/" },
-                { name: "About", path: "/about" },
-                { name: "Work Process", path: "/work-process" },
-                { name: "Pricing", path: "/pricing" },
+                { name: "About Us", path: "/about" },
+                { name: "Our Process", path: "/work-process" },
+                { name: "Pricing Plans", path: "/pricing" },
+                { name: "Blog", path: "/blog" },
+                { name: "Careers", path: "/careers" },
+                { name: "Contact Us", path: "/contact" },
               ].map((link, i) => (
                 <li key={i}>
                   <Link
                     to={link.path}
-                    className="text-slate-600 dark:text-slate-300
-                      hover:text-blue-600 transition"
+                    className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
                   >
+                    <span className="text-blue-500 text-xs transition-transform group-hover:translate-x-0.5">&#8250;</span>
                     {link.name}
                   </Link>
                 </li>
@@ -106,15 +111,23 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3 text-sm">
               {[
-                "Website Design",
-                "Web Development",
-                "Graphic Design",
-                "UI/UX Consulting",
+                { name: "Website Design", path: "/services/website-design" },
+                { name: "Web Development", path: "/services/website-development" },
+                { name: "Digital Marketing", path: "/services/digital-marketing" },
+                { name: "Social Media", path: "/services/social-media" },
+                { name: "AI Automation", path: "/services/ai-automation" },
+                { name: "Graphic Design", path: "/services/graphic-design" },
+                { name: "Domain Registration", path: "/services/domain-registration" },
+                { name: "Business Email", path: "/services/business-email" },
               ].map((service, i) => (
                 <li key={i}>
-                  <span className="text-slate-600 dark:text-slate-300">
-                    {service}
-                  </span>
+                  <Link
+                    to={service.path}
+                    className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+                  >
+                    <span className="text-blue-500 text-xs transition-transform group-hover:translate-x-0.5">&#8250;</span>
+                    {service.name}
+                  </Link>
                 </li>
               ))}
             </ul>
