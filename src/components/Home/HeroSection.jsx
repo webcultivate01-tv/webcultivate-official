@@ -156,7 +156,7 @@ const HeroSection = () => {
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  20+
+                  50+
                 </motion.div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">
                   Projects
@@ -172,7 +172,7 @@ const HeroSection = () => {
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
                 >
-                  10+
+                  20+
                 </motion.div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">
                   Clients
@@ -188,7 +188,7 @@ const HeroSection = () => {
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 1 }}
                 >
-                  2+
+                  3+
                 </motion.div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">
                   Years
