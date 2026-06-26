@@ -115,7 +115,7 @@ const HeroSection = () => {
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                Transform Your Business with{" "}
+                Helping Businesses Grow{" "}
                 <motion.span
                   className="relative inline-block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_100%]"
                   animate={{
@@ -127,7 +127,7 @@ const HeroSection = () => {
                     ease: "linear",
                   }}
                 >
-                  Digital Excellence
+                  Through Smart Digital Solutions
                 </motion.span>
               </motion.h1>
             </motion.div>
@@ -136,9 +136,9 @@ const HeroSection = () => {
               className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 md:mb-9 leading-relaxed"
               variants={itemVariants}
             >
-              WebCultivate delivers cutting-edge web solutions, innovative app
-              development, and strategic digital marketing to elevate your brand
-              in Amravati and beyond.
+              We build high-performing websites, custom software, and digital
+              solutions that help businesses attract more customers, increase
+              sales, and grow faster.
             </motion.p>
 
             {/* Stats Section */}
