@@ -1,13 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PageHeader } from '../components/shared';
-import { 
-  ProcessTimeline, 
-  MethodologySection, 
-  ProjectTimeline, 
-  ProcessCTA 
+import {
+  ProcessTimeline,
+  MethodologySection,
+  ProjectTimeline
 } from '../components/WorkProcess';
-import Hero from '../components/WorkProcess/Hero';  
+import { CTASection } from '../components/Home';
+import Hero from '../components/WorkProcess/Hero';
 
 const WorkProcess = () => {
   return (
@@ -23,15 +22,11 @@ const WorkProcess = () => {
         <link rel="canonical" href="https://www.webcultivate.com/work-process" />
       </Helmet>
       <div className="pt-20">
-        {/* <PageHeader
-          title="Our Work Process"
-          subtitle="A streamlined approach to deliver exceptional digital solutions from concept to launch."
-        /> */}
         <Hero />
         <ProcessTimeline />
         <MethodologySection />
         <ProjectTimeline />
-        <ProcessCTA />
+        <CTASection />
       </div>
     </>
   );

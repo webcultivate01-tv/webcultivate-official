@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { PageHeader } from '../components/shared';
 import { PricingCards, PricingTrustSection, PricingFAQ } from '../components/Pricing';
 
 const Pricing = () => {
@@ -16,7 +15,7 @@ const Pricing = () => {
         <meta property="og:url" content="https://www.webcultivate.com/pricing" />
         <link rel="canonical" href="https://www.webcultivate.com/pricing" />
       </Helmet>
-      <div className="pt-20">
+      <div className="bg-white dark:bg-slate-950">
         <PricingCards />
         <PricingTrustSection />
         <PricingFAQ />

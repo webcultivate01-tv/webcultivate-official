@@ -2,105 +2,22 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight, ShieldCheck, Users, Gauge, HeartHandshake } from 'lucide-react';
+import { SERVICES } from '../data/servicesData';
 import { SITE_STATS } from '../constants/stats';
 
-const allServices = [
-  {
-    title: "Website Design",
-    description: "Stunning, responsive websites that captivate your audience and convert visitors into paying clients.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-      </svg>
-    ),
-    features: ["Responsive Design", "Modern UI/UX", "Brand Integration"],
-    link: "/services/website-design",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=280&fit=crop&crop=center",
-  },
-  {
-    title: "Website Development",
-    description: "Scalable, high-performance web applications built with modern technologies for real business results.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
-    features: ["Custom Development", "CMS Integration", "API Development"],
-    link: "/services/website-development",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&h=280&fit=crop&crop=center",
-  },
-  {
-    title: "Digital Marketing",
-    description: "Data-driven strategies that boost your online visibility, drive targeted traffic, and increase sales.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
-    features: ["SEO Optimization", "PPC Campaigns", "Content Marketing"],
-    link: "/services/digital-marketing",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=280&fit=crop&crop=center",
-  },
-  {
-    title: "Social Media Management",
-    description: "Build a powerful social presence, engage your audience, and grow your brand across every platform.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-      </svg>
-    ),
-    features: ["Content Creation", "Community Engagement", "Paid Ad Campaigns"],
-    link: "/services/social-media",
-    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&h=280&fit=crop&crop=center",
-  },
-  {
-    title: "AI Automation",
-    description: "Automate repetitive tasks, deploy intelligent chatbots, and leverage AI insights to scale faster.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-2" />
-      </svg>
-    ),
-    features: ["Workflow Automation", "AI Chatbots", "Smart Analytics"],
-    link: "/services/ai-automation",
-    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=500&h=280&fit=crop&crop=center",
-  },
-  {
-    title: "Graphic Design",
-    description: "Eye-catching visuals — logos, brand identity, social creatives, and marketing materials that stand out.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    ),
-    features: ["Logo Design", "Brand Identity", "Print & Digital"],
-    link: "/services/graphic-design",
-    image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=500&h=280&fit=crop&crop=center",
-  },
-  {
-    title: "Domain Registration",
-    description: "Secure the perfect domain name for your business with fast, hassle-free registration and management.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-      </svg>
-    ),
-    features: ["Domain Search", "All Extensions", "Auto Renewal"],
-    link: "/services/domain-registration",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=280&fit=crop&crop=center",
-  },
-  {
-    title: "Business Email",
-    description: "Professional email hosting on your own domain that builds credibility and keeps your team connected.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-    features: ["Custom Domain Email", "Spam Protection", "Team Mailboxes"],
-    link: "/services/business-email",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&h=280&fit=crop&crop=center",
-  },
+const engagement = [
+  { step: '01', title: 'Discover', desc: 'A free consultation to understand your business, goals, and constraints.' },
+  { step: '02', title: 'Define', desc: 'A clear proposal — scope, timeline, and transparent pricing within 48 hours.' },
+  { step: '03', title: 'Deliver', desc: 'Milestone-driven execution with regular demos and a single point of contact.' },
+  { step: '04', title: 'Grow', desc: 'Post-launch support, reporting, and continuous improvement as you scale.' },
+];
+
+const whyUs = [
+  { Icon: Users, title: 'One accountable team', desc: 'Design, engineering, and marketing under one roof — no vendor juggling, no hand-off gaps.' },
+  { Icon: Gauge, title: 'Enterprise discipline, startup speed', desc: 'Documented processes and QA standards, delivered on timelines a small business can act on.' },
+  { Icon: ShieldCheck, title: 'Transparent by default', desc: 'Fixed scopes, clear pricing, and reporting that tells you exactly what you got for your money.' },
+  { Icon: HeartHandshake, title: 'Partners, not vendors', desc: 'We measure ourselves on your outcomes — most of our clients stay and grow with us for years.' },
 ];
 
 const Services = () => {
@@ -108,267 +25,333 @@ const Services = () => {
     <>
       <Helmet>
         <title>Our Services | WebCultivate Software Solutions Amravati</title>
-        <meta name="description" content="WebCultivate offers website design, development, digital marketing, social media management, AI automation, graphic design, domain registration, and business email services in Amravati." />
+        <meta name="description" content="WebCultivate delivers website design, development, digital marketing, social media management, AI automation, graphic design, domain registration, and business email services in Amravati." />
         <meta name="keywords" content="web development Amravati, digital marketing, social media management, AI automation, graphic design, business email, domain registration" />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <div className="bg-white dark:bg-slate-950">
 
-        {/* Subtle background glows */}
-        <div className="fixed -top-32 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="fixed -bottom-32 -left-32 w-96 h-96 bg-indigo-400/10 rounded-full blur-[140px] pointer-events-none" />
+        {/* ================= HERO — dark, editorial, service-index style ================= */}
+        <section className="relative bg-slate-950 overflow-hidden">
+          {/* Fine grid + single restrained glow */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b30_1px,transparent_1px),linear-gradient(to_bottom,#1e293b30_1px,transparent_1px)] bg-[size:56px_56px]" />
+          <div className="absolute -top-24 right-0 w-[520px] h-[520px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none" />
 
-        {/* Hero */}
-        <section className="relative pt-28 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-0">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-10 pb-16 lg:pb-20">
 
-          {/* Decorative grid */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f020_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f020_1px,transparent_1px)] bg-[size:48px_48px] dark:bg-[linear-gradient(to_right,#1e293b40_1px,transparent_1px),linear-gradient(to_bottom,#1e293b40_1px,transparent_1px)] pointer-events-none" />
-
-          <div className="relative max-w-5xl mx-auto text-center">
-
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full text-sm font-semibold text-blue-600 bg-blue-100/80 border border-blue-200/60 dark:text-blue-300 dark:bg-blue-900/40 dark:border-blue-700/40"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-              8 Services · Built for Growth
-            </motion.div>
-
-            {/* Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-6"
-            >
-              One Company.{' '}
-              <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-blue-600 bg-clip-text text-transparent">
-                Every Digital Service
-              </span>{' '}
-              You Need.
-            </motion.h1>
-
-            {/* Subtext */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10"
-            >
-              From your first website to AI-powered automation — WebCultivate delivers everything your business needs to dominate online, right from Amravati.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="flex flex-col sm:flex-row gap-3 justify-center mb-14"
-            >
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300"
-              >
-                Get a Free Consultation
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </Link>
-              <Link
-                to="/pricing"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-semibold rounded-xl hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 shadow-sm"
-              >
-                View Pricing
-              </Link>
-            </motion.div>
-
-            {/* Stats row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto"
-            >
-              {[
-                ...SITE_STATS,
-                { value: '8', label: 'Core Services' },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="bg-white/70 dark:bg-slate-800/70 backdrop-blur border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-4 text-center shadow-sm"
+              {/* Left — statement */}
+              <div className="lg:col-span-7 flex flex-col justify-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex items-center gap-4 mb-8"
                 >
-                  <p className="text-2xl font-extrabold text-blue-600 dark:text-blue-400">{stat.value}</p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{stat.label}</p>
-                </div>
-              ))}
-            </motion.div>
+                  <span className="h-px w-12 bg-blue-500" />
+                  <span className="text-xs font-semibold tracking-[0.25em] uppercase text-blue-400">
+                    Capabilities
+                  </span>
+                </motion.div>
 
+                <motion.h1
+                  initial={{ opacity: 0, y: 28 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.2rem] font-extrabold text-white tracking-tight leading-[1.05] mb-7"
+                >
+                  Digital services,
+                  <br />
+                  delivered to an
+                  <br />
+                  <span className="text-blue-500">enterprise standard.</span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.22 }}
+                  className="text-lg text-slate-400 leading-relaxed max-w-lg mb-10"
+                >
+                  Eight core capabilities spanning design, engineering, growth, and automation —
+                  one accountable team building the digital backbone of your business.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.32 }}
+                  className="flex flex-col sm:flex-row gap-3"
+                >
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-colors duration-300"
+                  >
+                    Talk to Our Team
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <a
+                    href="#services-grid"
+                    className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-slate-700 hover:border-slate-500 text-slate-200 font-semibold rounded-lg transition-colors duration-300"
+                  >
+                    Browse Capabilities
+                  </a>
+                </motion.div>
+              </div>
+
+              {/* Right — numbered service index */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="lg:col-span-5"
+              >
+                <div className="border border-slate-800 rounded-2xl bg-slate-900/50 backdrop-blur divide-y divide-slate-800/80 overflow-hidden">
+                  <div className="px-6 py-4 flex items-center justify-between">
+                    <span className="text-xs font-semibold tracking-[0.2em] uppercase text-slate-500">Service Index</span>
+                    <span className="text-xs text-slate-600">{String(SERVICES.length).padStart(2, '0')} capabilities</span>
+                  </div>
+                  {SERVICES.map((s, i) => (
+                    <Link
+                      key={s.slug}
+                      to={`/services/${s.slug}`}
+                      className="group flex items-center gap-4 px-6 py-[13px] hover:bg-slate-800/50 transition-colors duration-200"
+                    >
+                      <span className="text-xs font-mono text-slate-600 group-hover:text-blue-500 transition-colors w-6">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="flex-1 text-[15px] font-medium text-slate-300 group-hover:text-white transition-colors">
+                        {s.name}
+                      </span>
+                      <ArrowUpRight className="w-4 h-4 text-slate-700 group-hover:text-blue-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200" />
+                    </Link>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Stats ribbon on hero bottom edge */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="border-t border-slate-800"
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-slate-800">
+                {[...SITE_STATS, { value: '8', label: 'Core Services' }].map((stat) => (
+                  <div key={stat.label} className="px-4 py-7 text-center sm:text-left sm:px-8">
+                    <p className="text-2xl sm:text-3xl font-extrabold text-white">{stat.value}</p>
+                    <p className="text-xs sm:text-sm text-slate-500 mt-1">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Services Grid */}
-        <section className="pb-24 px-4 sm:px-6 lg:px-8">
+        {/* ================= SERVICES GRID ================= */}
+        <section id="services-grid" className="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 scroll-mt-20">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {allServices.map((service, index) => (
-                <motion.div
-                  key={index}
-                  className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-400 overflow-hidden flex flex-col"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.06 }}
-                  whileHover={{ y: -5 }}
-                >
-                  {/* Image */}
-                  <div className="relative overflow-hidden h-44">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
-                    {/* Icon badge */}
-                    <div className="absolute bottom-3 left-4 flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-lg bg-white/90 dark:bg-slate-800/90 text-blue-600 flex items-center justify-center shadow">
-                        {service.icon}
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">
-                      {service.title}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6 }}
+              className="max-w-2xl mb-16"
+            >
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 dark:text-blue-400 mb-3">What we do</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-5">
+                Everything your business needs to win online
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                Each capability stands on its own — together, they compound. Explore a service to see
+                exactly what's included, how we work, and what you walk away with.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {SERVICES.map((service, index) => (
+                <motion.div
+                  key={service.slug}
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.55, delay: (index % 4) * 0.07 }}
+                >
+                  <Link
+                    to={`/services/${service.slug}`}
+                    className="group relative flex flex-col h-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 hover:border-blue-400 dark:hover:border-blue-600 hover:shadow-xl hover:shadow-blue-500/5 hover:-translate-y-1 transition-all duration-300"
+                  >
+                    {/* Top row — icon + index */}
+                    <div className="flex items-start justify-between mb-6">
+                      <span className="flex items-center justify-center w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors duration-300">
+                        <service.Icon className="w-[22px] h-[22px]" />
+                      </span>
+                      <span className="text-xs font-mono text-slate-300 dark:text-slate-700 group-hover:text-blue-400 transition-colors">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+
+                    <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-slate-400 dark:text-slate-500 mb-2">
+                      {service.category}
+                    </p>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 leading-snug">
+                      {service.name}
                     </h3>
-                    <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
-                      {service.description}
+                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6 flex-1">
+                      {service.shortDesc}
                     </p>
 
-                    <ul className="space-y-1.5 mb-5 flex-1">
-                      {service.features.map((f) => (
-                        <li key={f} className="flex items-center text-xs text-slate-500 dark:text-slate-400">
-                          <span className="w-1.5 h-1.5 rounded-full mr-2 bg-blue-500 flex-shrink-0"></span>
-                          {f}
-                        </li>
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {service.tags.map((t) => (
+                        <span key={t} className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-800">
+                          {t}
+                        </span>
                       ))}
-                    </ul>
-
-                    <div className="flex gap-2 mt-auto">
-                      <Link
-                        to={service.link}
-                        className="flex-1 text-center px-3 py-2 text-xs font-semibold rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white hover:shadow-md hover:shadow-blue-500/25 transition-all duration-300"
-                      >
-                        Learn More
-                      </Link>
-                      <Link
-                        to="/contact"
-                        className="flex-1 text-center px-3 py-2 text-xs font-semibold rounded-lg border border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
-                      >
-                        Get Quote
-                      </Link>
                     </div>
-                  </div>
+
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400 mt-auto">
+                      Explore service
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    </span>
+                  </Link>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        {/* ================= WHY US ================= */}
+        <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50 border-y border-slate-200 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-          {/* Glow orbs */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-600/10 rounded-full blur-[80px] pointer-events-none" />
-
-          <div className="relative max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-              {/* Left */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6 }}
+                className="lg:col-span-4"
               >
-                <span className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full text-sm font-semibold text-blue-300 bg-blue-900/50 border border-blue-700/40">
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-                  Free Consultation Available
-                </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-5">
-                  Ready to Build{' '}
-                  <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                    Something Great?
-                  </span>
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 dark:text-blue-400 mb-3">Why WebCultivate</p>
+                <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-5">
+                  Built like a big firm. Priced like a partner.
                 </h2>
-                <p className="text-slate-400 text-lg leading-relaxed mb-8">
-                  Not sure where to start? Our team will listen to your goals and craft the perfect digital strategy — no pressure, no jargon.
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                  We bring the process discipline of a large IT company to businesses that need
+                  results — without the overhead, the bureaucracy, or the ticket queues.
                 </p>
-
-                {/* Trust chips */}
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {[
-                    { icon: '✓', text: 'Free Strategy Call' },
-                    { icon: '✓', text: 'No Long-Term Lock-in' },
-                    { icon: '✓', text: 'Results-Focused' },
-                  ].map((chip) => (
-                    <span key={chip.text} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-700/60 border border-slate-600/60 text-slate-300 text-sm">
-                      <span className="text-blue-400 font-bold">{chip.icon}</span>
-                      {chip.text}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300"
-                  >
-                    Start the Conversation
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                  </Link>
-                  <Link
-                    to="/pricing"
-                    className="inline-flex items-center justify-center px-8 py-3.5 border border-slate-600 text-slate-300 font-semibold rounded-xl hover:border-slate-400 hover:text-white transition-all duration-300"
-                  >
-                    Explore Pricing
-                  </Link>
-                </div>
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:gap-2.5 transition-all"
+                >
+                  More about our team <ArrowRight className="w-4 h-4" />
+                </Link>
               </motion.div>
 
-              {/* Right — info cards */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-              >
-                {[
-                  { icon: '🚀', title: 'Fast Turnaround', desc: 'Most projects kick off within 48 hours of your first call.' },
-                  { icon: '🎯', title: 'Tailored Strategy', desc: 'No cookie-cutter plans — every solution is built around your goals.' },
-                  { icon: '📊', title: 'Transparent Reporting', desc: 'Regular updates so you always know what is happening.' },
-                  { icon: '🤝', title: 'Dedicated Support', desc: 'A real team you can reach — not a ticket queue.' },
-                ].map((card, i) => (
+              <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {whyUs.map((item, i) => (
                   <motion.div
-                    key={i}
+                    key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                    className="bg-slate-800/60 border border-slate-700/60 rounded-2xl p-5 hover:border-blue-500/40 hover:bg-slate-800/80 transition-all duration-300"
+                    transition={{ duration: 0.5, delay: i * 0.07 }}
+                    className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-7 hover:border-blue-300 dark:hover:border-blue-700 transition-colors duration-300"
                   >
-                    <span className="text-2xl mb-3 block">{card.icon}</span>
-                    <h4 className="text-white font-semibold mb-1.5">{card.title}</h4>
-                    <p className="text-slate-400 text-sm leading-relaxed">{card.desc}</p>
+                    <span className="flex items-center justify-center w-11 h-11 rounded-lg bg-blue-50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 text-blue-600 dark:text-blue-400 mb-5">
+                      <item.Icon className="w-5 h-5" />
+                    </span>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2">{item.title}</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
                   </motion.div>
                 ))}
-              </motion.div>
-
+              </div>
             </div>
+          </div>
+        </section>
+
+        {/* ================= ENGAGEMENT MODEL ================= */}
+        <section className="py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.6 }}
+              className="max-w-2xl mb-14"
+            >
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 dark:text-blue-400 mb-3">Engagement model</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                From first call to long-term growth
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {engagement.map((e, i) => (
+                <motion.div
+                  key={e.step}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="relative"
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <span className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-500 font-extrabold text-sm flex-shrink-0">
+                      {e.step}
+                    </span>
+                    {i < engagement.length - 1 && (
+                      <span className="hidden lg:block h-px flex-1 bg-slate-200 dark:bg-slate-800" />
+                    )}
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{e.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed pr-4">{e.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= CTA ================= */}
+        <section className="relative bg-slate-950 py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b30_1px,transparent_1px),linear-gradient(to_bottom,#1e293b30_1px,transparent_1px)] bg-[size:56px_56px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[640px] h-[300px] bg-blue-600/15 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-blue-400 mb-5">Free consultation · No obligation</p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                Not sure which service you need?
+                <br className="hidden sm:block" />
+                That's exactly what the first call is for.
+              </h2>
+              <p className="text-lg text-slate-400 leading-relaxed mb-10 max-w-2xl mx-auto">
+                Tell us where your business is headed. We'll map the right capabilities to your goals
+                and send a clear plan — scope, timeline, and pricing — within 48 hours.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-colors duration-300"
+                >
+                  Book a Free Consultation <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to="/pricing"
+                  className="inline-flex items-center justify-center px-8 py-4 border border-slate-700 hover:border-slate-500 text-slate-200 font-semibold rounded-lg transition-colors duration-300"
+                >
+                  View Pricing
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
 

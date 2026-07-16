@@ -31,10 +31,15 @@
 
   html {
     @apply scroll-smooth;
+    /* `clip` rather than `hidden`: it kills sideways scrolling without turning
+       the element into a scroll container, so position:sticky keeps working. */
+    overflow-x: clip;
   }
 
   body {
     @apply font-sans antialiased leading-relaxed;
     @apply bg-white text-gray-800 dark:bg-gradient-to-br dark:from-slate-900 dark:to-slate-800 dark:text-gray-200;
+    overflow-x: clip;
+    width: 100%;
   }
 }

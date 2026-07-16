@@ -1,269 +1,234 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import {
+  MessagesSquare,
+  CalendarCheck,
+  KeyRound,
+  LifeBuoy,
+  TrendingUp,
+  Target,
+  Zap,
+  Star,
+  Quote,
+  ArrowRight,
+  ShieldCheck,
+} from 'lucide-react';
+import { SITE_STATS } from '../../constants/stats';
+
+// The objections a prospect actually has before signing — each answered by how we work.
+const differentiators = [
+  {
+    Icon: MessagesSquare,
+    title: 'You talk to the people building it',
+    description:
+      'No account managers relaying messages. Direct access to the developers and designers on your project.',
+  },
+  {
+    Icon: CalendarCheck,
+    title: 'Fixed scope, fixed timeline',
+    description:
+      'You get a written scope and delivery date before we start — not a moving target and a growing invoice.',
+  },
+  {
+    Icon: KeyRound,
+    title: 'You own everything',
+    description:
+      'Code, hosting, domains and analytics are handed over in your name. No lock-in, no hostage situations.',
+  },
+  {
+    Icon: LifeBuoy,
+    title: 'We stay after launch',
+    description:
+      '30 days of free post-launch support, then optional maintenance. Launch day is the start, not the exit.',
+  },
+];
+
+// Outcome metrics shown in the proof panel. These mirror the figures used on the hero
+// so the same claims appear consistently across the homepage.
+const outcomes = [
+  { Icon: TrendingUp, value: '+340%', label: 'Avg. traffic growth', iconClass: 'text-primary' },
+  { Icon: Target, value: '+2.8×', label: 'Conversion rate', iconClass: 'text-amber-500' },
+  { Icon: Zap, value: '< 1.2s', label: 'Page load speed', iconClass: 'text-emerald-500' },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
 const GrowthSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const features = [
-    {
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-        </svg>
-      ),
-      title: "Custom Development",
-      description: "Tailored solutions built with modern technologies"
-    },
-    {
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      ),
-      title: "Digital Marketing",
-      description: "Strategic campaigns that drive real results"
-    },
-    {
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-      title: "Result-Driven Strategies",
-      description: "Proven methodologies for business growth"
-    },
-    {
-      icon: (
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      title: "Fast Performance",
-      description: "Lightning-fast websites that convert visitors"
-    }
-  ];
-
   return (
     <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
-      <motion.div 
-        className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360]
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
-      <motion.div 
-        className="absolute -bottom-40 -right-40 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          rotate: [360, 180, 0]
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: "linear"
-        }}
-      />
+      {/* Static background glows — no animation loop, keeps the section calm */}
+      <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 relative z-10">
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.15 }}
         >
-          <motion.div variants={itemVariants}>
-            <motion.div
-              className="inline-block mb-4"
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
+          {/* ── LEFT: the pitch ── */}
+          <div>
+            <motion.span
+              variants={itemVariants}
+              className="inline-block mb-5 px-4 py-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full text-sm font-semibold border border-emerald-500/20"
             >
-              <span className="px-4 py-2 bg-gradient-to-r from-green-500/10 to-blue-500/10 text-green-600 dark:text-green-400 rounded-full text-sm font-semibold border border-green-500/20">
-                Business Growth
-              </span>
-            </motion.div>
+              Why WebCultivate
+            </motion.span>
 
-            <motion.h2 
-              className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+            <motion.h2
+              variants={itemVariants}
+              className="text-3xl sm:text-4xl md:text-[42px] font-bold text-slate-900 dark:text-white mb-5 leading-[1.15] tracking-tight"
             >
-              Accelerate Your{" "}
-              <motion.span 
-                className="bg-gradient-to-r from-primary via-secondary to-purple-600 bg-clip-text text-transparent bg-[length:200%_100%]"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
-                Digital Success
-              </motion.span>
+              Growth you can measure,{' '}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                not guess
+              </span>
             </motion.h2>
 
-            <motion.p 
-              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 leading-relaxed"
+            <motion.p
               variants={itemVariants}
+              className="text-base sm:text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-xl"
             >
-              Transform your business with our comprehensive digital solutions. From cutting-edge 
-              web development to strategic digital marketing, we're your trusted partner in 
-              building a powerful online presence that drives real results.
+              Most agencies sell you a website. We build a business asset — then prove it
+              works with traffic, leads and revenue you can see in your own dashboard.
+              Here's what that looks like in practice.
             </motion.p>
 
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8"
-              variants={containerVariants}
-            >
-              {features.map((feature, index) => (
+            <motion.div variants={containerVariants} className="space-y-4 mb-8">
+              {differentiators.map(({ Icon, title, description }) => (
                 <motion.div
-                  key={index}
-                  className="group flex items-start gap-3 p-4 rounded-2xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-slate-700/50 hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-300"
+                  key={title}
                   variants={itemVariants}
-                  whileHover={{ scale: 1.02, y: -2 }}
+                  className="group flex items-start gap-4 p-4 rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg hover:shadow-primary/5 hover:border-primary/30 transition-all duration-300"
                 >
-                  <motion.div 
-                    className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-r from-primary to-secondary text-white flex-shrink-0"
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
-                  >
-                    {feature.icon}
-                  </motion.div>
+                  <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary flex-shrink-0 group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white transition-all duration-300">
+                    <Icon className="w-5 h-5" strokeWidth={1.75} />
+                  </span>
                   <div>
-                    <h4 className="font-semibold text-gray-800 dark:text-gray-100 mb-1">
-                      {feature.title}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {feature.description}
+                    <h3 className="font-semibold text-slate-900 dark:text-white mb-1">
+                      {title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                      {description}
                     </p>
                   </div>
                 </motion.div>
               ))}
             </motion.div>
 
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-primary to-secondary shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all duration-300"
+              >
+                Book a Free Strategy Call
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/work-process"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl font-semibold border-2 border-primary text-primary dark:text-primary-light hover:bg-primary hover:text-white transition-all duration-300"
+              >
+                See How We Work
+              </Link>
+            </motion.div>
+
+            <motion.p
               variants={itemVariants}
+              className="mt-4 flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-500"
             >
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl hover:shadow-primary/25 transition-all duration-300 group"
-                >
-                  <span>Start Your Growth Journey</span>
-                  <motion.svg 
-                    className="ml-2 w-5 h-5"
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </motion.svg>
-                </Link>
-              </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  to="/work-process"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-primary text-primary dark:text-primary-light font-semibold rounded-2xl hover:bg-primary hover:text-white transition-all duration-300"
-                >
-                  View Our Process
-                </Link>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              30-minute call · Free project roadmap · No obligation
+            </motion.p>
+          </div>
 
-          <motion.div 
-            className="flex items-center justify-center lg:justify-end relative"
-            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 1, ease: "backOut" }}
-          >
-            <motion.div 
-              className="relative"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=400&fit=crop&crop=center"
-                alt="Business Growth Analytics"
-                className="w-full max-w-md h-80 object-cover rounded-3xl shadow-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-3xl" />
-            </motion.div>
+          {/* ── RIGHT: the proof ── */}
+          <motion.div variants={itemVariants} className="lg:pl-4">
+            <div className="rounded-3xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-900/5 overflow-hidden">
+              {/* Outcome metrics */}
+              <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-700/60">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-5">
+                  What clients typically see
+                </p>
+                <div className="grid grid-cols-3 gap-3">
+                  {outcomes.map(({ Icon, value, label, iconClass }) => (
+                    <div
+                      key={label}
+                      className="rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-700/60 p-4 text-center"
+                    >
+                      <Icon className={`w-5 h-5 mx-auto mb-2.5 ${iconClass}`} strokeWidth={1.75} />
+                      <p className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-none">
+                        {value}
+                      </p>
+                      <p className="mt-1.5 text-[10px] leading-tight text-slate-500 dark:text-slate-400">
+                        {label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-            <motion.div 
-              className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg"
-              animate={{ 
-                rotate: [0, 360],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{ 
-                rotate: { duration: 10, repeat: Infinity, ease: "linear" },
-                scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-              }}
-            >
-              <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
-            </motion.div>
+              {/* Client quote */}
+              <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-700/60 relative">
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/10 dark:text-primary/20" />
+                <div className="flex items-center gap-0.5 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <blockquote className="text-base sm:text-lg font-medium text-slate-800 dark:text-slate-100 leading-relaxed mb-5">
+                  "WebCultivate transformed our online presence. Excellent work!"
+                </blockquote>
+                <figcaption className="flex items-center gap-3">
+                  <span className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary text-white text-sm font-bold flex-shrink-0">
+                    AP
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                      Archana Pawar
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Founder, Pioneer's Hub IT Consultant
+                    </p>
+                  </div>
+                </figcaption>
+              </div>
 
-            <motion.div 
-              className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg"
-              animate={{ 
-                rotate: [360, 0],
-                y: [0, -10, 0]
-              }}
-              transition={{ 
-                rotate: { duration: 8, repeat: Infinity, ease: "linear" },
-                y: { duration: 2.5, repeat: Infinity, ease: "easeInOut" }
-              }}
+              {/* Track record */}
+              <div className="grid grid-cols-3 divide-x divide-slate-100 dark:divide-slate-700/60 bg-slate-50/50 dark:bg-slate-900/30">
+                {SITE_STATS.map(({ value, label }) => (
+                  <div key={label} className="px-3 py-5 text-center">
+                    <p className="text-xl sm:text-2xl font-extrabold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent leading-none">
+                      {value}
+                    </p>
+                    <p className="mt-1.5 text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                      {label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              to="/testimonials"
+              className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary dark:text-primary-light hover:gap-2.5 transition-all duration-300"
             >
-              <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </motion.div>
+              Read all client reviews
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </motion.div>
         </motion.div>
       </div>

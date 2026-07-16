@@ -1,79 +1,113 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Zap, Users, ShieldCheck, Check } from 'lucide-react';
+
+const methodologies = [
+  {
+    Icon: Zap,
+    title: 'Agile Delivery',
+    description:
+      'We ship in weekly sprints instead of disappearing for two months. You see working software early, which means changes cost days rather than a rebuild.',
+    benefits: ['Working builds every week', 'Changes absorbed mid-project', 'No big-bang reveal'],
+  },
+  {
+    Icon: Users,
+    title: 'Client Collaboration',
+    description:
+      'You get one named point of contact for the whole project — not a ticket queue. Questions are answered the same working day.',
+    benefits: ['One dedicated contact', 'Same-day replies', 'Decisions logged in writing'],
+  },
+  {
+    Icon: ShieldCheck,
+    title: 'Quality Assurance',
+    description:
+      'Testing runs alongside development, not as an afterthought at the end. Bugs get caught while the code is still fresh and cheap to fix.',
+    benefits: ['Real-device testing', 'Security & accessibility passes', 'Performance budgets enforced'],
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
 const MethodologySection = () => {
-  const methodologies = [
-    {
-      title: 'Agile Development',
-      description: 'We use iterative sprints to deliver features incrementally, allowing for flexibility and continuous improvement throughout the project.',
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      ),
-      benefits: ['Faster delivery', 'Flexible changes', 'Regular feedback']
-    },
-    {
-      title: 'Client Collaboration',
-      description: 'Continuous communication and collaboration ensure that your vision is accurately translated into the final product.',
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
-      benefits: ['Regular updates', 'Transparent process', 'Your input valued']
-    },
-    {
-      title: 'Quality Assurance',
-      description: 'Rigorous testing at every stage ensures a bug-free, high-performance final product that exceeds expectations.',
-      icon: (
-        <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-      benefits: ['Thorough testing', 'Bug-free delivery', 'Performance optimized']
-    }
-  ];
-
   return (
-    <section className="py-20 bg-gray-50 dark:bg-slate-800">
-      <div className="max-w-7xl mx-auto px-5">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-            Our Methodology
+    <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          <span className="inline-block mb-4 px-4 py-1.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full text-sm font-semibold border border-indigo-500/20">
+            How we work
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 tracking-tight">
+            The principles behind the{' '}
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              six stages
+            </span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            We combine industry best practices with innovative approaches to deliver exceptional results
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+            A process is only as good as the habits behind it. These three shape every
+            project we take on.
           </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {methodologies.map((method, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-slate-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {methodologies.map(({ Icon, title, description, benefits }) => (
+            <motion.div
+              key={title}
+              variants={itemVariants}
+              className="group relative flex flex-col rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
             >
-              <div className="flex items-center justify-center text-primary dark:text-primary-light mb-6">
-                {method.icon}
+              <span className="absolute top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-500" />
+
+              <div className="flex flex-col h-full p-6 sm:p-8">
+                <span className="flex items-center justify-center w-12 h-12 mb-5 rounded-xl bg-primary/10 text-primary group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:scale-105 transition-all duration-300">
+                  <Icon className="w-6 h-6" strokeWidth={1.75} />
+                </span>
+
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                  {title}
+                </h3>
+
+                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6 flex-1">
+                  {description}
+                </p>
+
+                <div className="mt-auto pt-5 border-t border-slate-100 dark:border-slate-700/60 space-y-2.5">
+                  {benefits.map((benefit) => (
+                    <div key={benefit} className="flex items-start gap-2.5">
+                      <span className="flex items-center justify-center w-4 h-4 mt-0.5 rounded-full bg-primary/10 flex-shrink-0">
+                        <Check className="w-2.5 h-2.5 text-primary" strokeWidth={3} />
+                      </span>
+                      <span className="text-sm text-slate-600 dark:text-slate-400">
+                        {benefit}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">
-                {method.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-                {method.description}
-              </p>
-              <div className="space-y-2">
-                {method.benefits.map((benefit, idx) => (
-                  <div key={idx} className="flex items-center gap-2">
-                    <svg className="w-5 h-5 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    <span className="text-gray-600 dark:text-gray-400">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { MissionVisionValues, WhyChooseUs } from '../components/About';
 import Hero from '../components/About/Hero';
+import { CTASection } from '../components/Home';
 
 const About = () => {
   return (
@@ -47,10 +48,12 @@ const About = () => {
         </script>
       </Helmet>
 
-      <div className="pt-20 bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+      <div>
         <Hero />
         <MissionVisionValues />
         <WhyChooseUs />
+        {/* Same closing CTA as the homepage — one consistent conversion point. */}
+        <CTASection />
       </div>
     </>
   );

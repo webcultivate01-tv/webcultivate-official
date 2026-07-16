@@ -1,130 +1,131 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { Target, Telescope, HeartHandshake, Check } from "lucide-react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i) => ({
+// Each pillar ends with "what this means for you" — the section sells the
+// visitor on how we work, not just what we believe.
+const pillars = [
+  {
+    Icon: Target,
+    title: "Our Mission",
+    accent: "text-primary bg-primary/10 dark:bg-primary/20",
+    description:
+      "To empower businesses with high-quality digital solutions that drive growth, improve user experience, and build long-term online success.",
+    forYou: "Every decision on your project is measured against your growth.",
+  },
+  {
+    Icon: Telescope,
+    title: "Our Vision",
+    accent: "text-violet-600 dark:text-violet-400 bg-violet-500/10 dark:bg-violet-500/20",
+    description:
+      "To become a trusted digital partner for businesses worldwide, known for innovation, performance, and reliable technology solutions.",
+    forYou: "We win by keeping you long-term — not by one-off invoices.",
+  },
+  {
+    Icon: HeartHandshake,
+    title: "Our Values",
+    accent: "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20",
+    description:
+      "Quality, transparency, innovation, and client satisfaction — the values that guide every project at WebCultivate.",
+    forYou: "Honest scopes, honest timelines, and work we're proud to sign.",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
     opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: "easeOut" },
-  }),
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 const MissionVisionValues = () => {
-  const cards = [
-    {
-      title: "Our Mission",
-      image: "./mission.jpg",
-      description:
-        "To empower businesses with high-quality digital solutions that drive growth, improve user experience, and build long-term online success.",
-    },
-    {
-      title: "Our Vision",
-      image:
-        "./vision.jpg",
-      description:
-        "To become a trusted digital partner for businesses worldwide, known for innovation, performance, and reliable technology solutions.",
-    },
-    {
-      title: "Our Values",
-      image:
-        "./values.jpg",
-      description:
-        "We believe in quality, transparency, innovation, and client satisfaction—values that guide every project at WebCultivate.",
-    },
-  ];
-
   return (
-    <>
-      <Helmet>
-        <title>Mission, Vision & Values - WebCultivate Amravati</title>
-        <meta
-          name="description"
-          content="Explore WebCultivate Software Solutions’ mission, vision, and values. We empower businesses in Amravati with modern, scalable digital solutions."
-        />
-        <meta
-          name="keywords"
-          content="WebCultivate mission, IT company Amravati, web development values, software solutions vision"
-        />
-      </Helmet>
+    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
+      {/* Static background glows — no animation loop, keeps the section calm */}
+      <div className="absolute -top-40 -left-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
 
-      <section className="relative py-24 bg-gradient-to-br from-blue-50 via-white to-sky-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 overflow-hidden">
-        {/* Background glow */}
-        <div className="absolute -top-32 -right-32 w-96 h-96 bg-blue-400/10 rounded-full blur-[140px]" />
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-400/10 rounded-full blur-[140px]" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <span className="inline-block mb-4 px-4 py-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full text-sm font-semibold border border-emerald-500/20">
+            What Drives Us
+          </span>
 
-        <div className="relative max-w-7xl mx-auto px-6">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
-              Our Mission, Vision & Values
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">
-              The principles that define how WebCultivate Software Solutions
-              builds trusted, high-impact digital products.
-            </p>
-          </motion.div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6 tracking-tight">
+            Built on a mission,{" "}
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              run on values
+            </span>
+          </h2>
 
-          {/* Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {cards.map((card, index) => (
-<motion.div
-  key={index}
-  custom={index}
-  variants={fadeUp}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  className="group relative bg-white/70 dark:bg-slate-900/70
-    backdrop-blur-xl rounded-3xl border border-slate-200
-    dark:border-slate-700 shadow-lg hover:shadow-2xl
-    transition-all duration-300 overflow-hidden"
->
-  {/* Image Section */}
-  <div className="relative h-44">
-    <img
-      src={card.image}
-      alt={card.title}
-      className="w-full h-full object-cover transition-transform
-        duration-500 group-hover:scale-105"
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent" />
+          <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+            These aren't wall posters. They're the standards your project is
+            held to from the first call to launch day — and after.
+          </p>
+        </motion.div>
 
-    {/* Floating Badge */}
-    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2
-      w-14 h-14 rounded-2xl bg-white dark:bg-slate-800
-      flex items-center justify-center shadow-lg border
-      border-slate-200 dark:border-slate-700">
-      <span className="text-xl font-extrabold
-        bg-gradient-to-r from-blue-500 to-indigo-500
-        bg-clip-text text-transparent">
-        {index + 1}
-      </span>
-    </div>
-  </div>
+        {/* Cards */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {pillars.map(({ Icon, title, accent, description, forYou }) => (
+            <motion.div
+              key={title}
+              variants={itemVariants}
+              className="group relative flex flex-col rounded-2xl bg-white dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
+            >
+              {/* Accent rail — sweeps across on hover */}
+              <span className="absolute top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-500" />
 
-  {/* Content */}
-  <div className="pt-12 px-8 pb-8 text-center">
-    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-      {card.title}
-    </h3>
-    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-      {card.description}
-    </p>
-  </div>
-</motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
+              <div className="relative flex flex-col h-full p-6 sm:p-7">
+                {/* Icon tile */}
+                <span className={`flex items-center justify-center w-12 h-12 mb-5 rounded-xl ${accent} group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white group-hover:scale-105 transition-all duration-300`}>
+                  <Icon className="w-6 h-6" strokeWidth={1.75} />
+                </span>
+
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                  {title}
+                </h3>
+
+                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400 mb-6 flex-1">
+                  {description}
+                </p>
+
+                {/* What this means for the client */}
+                <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700/60">
+                  <p className="flex items-start gap-2 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                    <span className="flex items-center justify-center w-4 h-4 mt-px shrink-0 rounded-full bg-emerald-100 dark:bg-emerald-500/20">
+                      <Check className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400" strokeWidth={3.5} />
+                    </span>
+                    <span>
+                      <span className="font-semibold text-slate-800 dark:text-slate-200">For you: </span>
+                      {forYou}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

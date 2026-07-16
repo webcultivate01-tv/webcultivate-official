@@ -7,11 +7,11 @@ import {
   ProjectsSection,
   WorkProcessPreview,
   CTASection,
-  TechnologyStack
+  TechnologyStack,
+  GlobalReach
 } from '../components/Home';
 import FAQSection from '../components/Home/FAQ';
 import TestimonialsCarousel from '../components/Home/Testimonial';
-import NewsletterSection from '../components/Home/NewsLetter';  
 
 
 const Home = () => {
@@ -29,14 +29,16 @@ const Home = () => {
       </Helmet>
       <div>
         <HeroSection />
+        {/* Reach band sits right under the hero — it reads as credibility before the pitch. */}
+        <GlobalReach />
         <ServicesSection />
         <GrowthSection />
         {/* <ProjectsSection /> */}
         <TechnologyStack />
         <WorkProcessPreview />
+        <TestimonialsCarousel />
         <FAQSection />
-        <TestimonialsCarousel />  
-        <NewsletterSection /> 
+        {/* Single closing CTA — also carries the contact channels and newsletter. */}
         <CTASection />
       </div>
     </>

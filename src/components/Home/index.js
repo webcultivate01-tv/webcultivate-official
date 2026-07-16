@@ -6,3 +6,4 @@ export { default as ProjectsSection } from './ProjectsSection';
 export { default as WorkProcessPreview } from './WorkProcessPreview';
 export { default as CTASection } from './CTASection';
 export { default as TechnologyStack } from './TechnologyStack';
+export { default as GlobalReach } from './GlobalReach';
