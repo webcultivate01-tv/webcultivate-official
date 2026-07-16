@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X, ArrowRight } from "lucide-react";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -100,85 +102,91 @@ const Navbar = () => {
           </div>
 
           {/* Mobile/Tablet Navigation Menu - Right Sidebar */}
-{isMobileMenuOpen && (
-  <>
-    {/* Backdrop */}
-    <div
-      onClick={() => setIsMobileMenuOpen(false)}
-      className="
-        lg:hidden fixed inset-0 z-40
-        bg-black/40 backdrop-blur-sm
-        transition-opacity duration-500 ease-out
-      "
-    />
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <React.Fragment>
+                {/* Backdrop */}
+                <motion.div
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="lg:hidden fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
 
-    {/* Sidebar */}
-    <div
-      className={`
-        lg:hidden fixed top-0 right-0 z-50
-        w-80 max-w-[85vw] h-screen
-        bg-white dark:bg-slate-900
-        shadow-[0_20px_50px_rgba(0,0,0,0.35)]
-        transform transition-all duration-500 ease-out
-        ${isMobileMenuOpen
-          ? "translate-x-0 opacity-100 scale-100"
-          : "translate-x-full opacity-0 scale-95"}
-      `}
-    >
-      {/* Header */}
-      <div className="h-16 flex items-center justify-between px-5 border-b border-gray-200 dark:border-slate-700">
-        <div className="flex items-center gap-2">
-          <img src="/wlogo.png" className="w-8 h-8" />
-          <span className="font-bold text-lg">WebCultivate</span>
-        </div>
+                {/* Sidebar */}
+                <motion.div
+                  className="lg:hidden fixed top-0 right-0 z-50 w-80 max-w-[85vw] h-screen bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-700 shadow-2xl flex flex-col"
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "100%" }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {/* Header */}
+                  <div className="h-16 flex items-center justify-between px-5 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
+                    <div className="flex items-center gap-2">
+                      <img src="/wlogo.png" className="w-8 h-8" alt="WebCultivate Logo" />
+                      <span className="font-bold text-lg bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                        WebCultivate
+                      </span>
+                    </div>
 
-        <button
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition"
-        >
-          ✕
-        </button>
-      </div>
+                    <button
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-primary-light transition-all duration-300"
+                      aria-label="Close menu"
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
 
-      {/* Links */}
-      <div className="h-[calc(100vh-64px)] overflow-y-auto px-4 py-5 space-y-2">
-        {navLinks.map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className={`
-              block px-4 py-3 rounded-xl font-medium
-              transition-all duration-300
-              ${
-                location.pathname === link.path
-                  ? "bg-primary/10 text-primary"
-                  : "hover:bg-gray-100 dark:hover:bg-slate-800"
-              }
-            `}
-          >
-            {link.name}
-          </Link>
-        ))}
+                  {/* Links */}
+                  <div className="flex-1 overflow-y-auto px-4 py-5 space-y-1.5">
+                    {navLinks.map((link, index) => (
+                      <motion.div
+                        key={link.path}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: 0.05 + index * 0.04, ease: "easeOut" }}
+                      >
+                        <Link
+                          to={link.path}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`relative block px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                            location.pathname === link.path
+                              ? "bg-primary/10 text-primary dark:text-primary-light"
+                              : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                          }`}
+                        >
+                          {location.pathname === link.path && (
+                            <span className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-1 rounded-full bg-gradient-to-b from-primary to-secondary" />
+                          )}
+                          {link.name}
+                        </Link>
+                      </motion.div>
+                    ))}
 
-        {/* CTA */}
-        <Link
-          to="/contact"
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="
-            block w-full text-center mt-6 px-6 py-3 rounded-2xl
-            font-semibold text-white
-            bg-gradient-to-r from-primary to-primary-dark
-            shadow-lg hover:shadow-xl
-            transition-all duration-300
-          "
-        >
-          Get Started
-        </Link>
-      </div>
-    </div>
-  </>
-)}
+                    {/* CTA */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.05 + navLinks.length * 0.04, ease: "easeOut" }}
+                    >
+                      <Link
+                        to="/contact"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="group flex items-center justify-center gap-2 w-full text-center mt-6 px-6 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-primary to-primary-dark shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all duration-300"
+                      >
+                        Get Started
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-300" />
+                      </Link>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </React.Fragment>
+            )}
+          </AnimatePresence>
 
 
           <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 flex-shrink-0">
@@ -221,29 +229,27 @@ const Navbar = () => {
 
             {/* Mobile/Tablet Menu Toggle */}
             <button
-              className="lg:hidden flex flex-col justify-center items-center gap-[3px] sm:gap-1 p-1.5 sm:p-2 bg-transparent border-none cursor-pointer z-50 w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0"
+              className="lg:hidden relative flex items-center justify-center rounded-xl p-1.5 sm:p-2 bg-transparent border-none cursor-pointer z-50 w-9 h-9 sm:w-10 sm:h-10 flex-shrink-0 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-primary dark:hover:text-primary-light transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
+              aria-expanded={isMobileMenuOpen}
             >
-              <span
-                className={`block w-[18px] sm:w-5 md:w-6 h-[2px] sm:h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300 ${
-                  isMobileMenuOpen
-                    ? "rotate-45 translate-y-[5px] sm:translate-y-[6px] md:translate-y-2"
-                    : ""
-                }`}
-              ></span>
-              <span
-                className={`block w-[18px] sm:w-5 md:w-6 h-[2px] sm:h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300 ${
-                  isMobileMenuOpen ? "opacity-0" : ""
-                }`}
-              ></span>
-              <span
-                className={`block w-[18px] sm:w-5 md:w-6 h-[2px] sm:h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300 ${
-                  isMobileMenuOpen
-                    ? "-rotate-45 -translate-y-[5px] sm:-translate-y-[6px] md:-translate-y-2"
-                    : ""
-                }`}
-              ></span>
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={isMobileMenuOpen ? "close" : "open"}
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="flex items-center justify-center"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                  ) : (
+                    <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
+                  )}
+                </motion.span>
+              </AnimatePresence>
             </button>
           </div>
         </div>

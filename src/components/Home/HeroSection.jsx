@@ -220,8 +220,13 @@ const HeroSection = () => {
               custom={3} {...rise}
               className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2.5 mt-5"
             >
-              {valuePoints.map((point) => (
-                <li key={point} className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+              {valuePoints.map((point, i) => (
+                <li
+                  key={point}
+                  className={`flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 ${
+                    i === 2 ? "basis-full justify-center lg:basis-auto lg:justify-start" : ""
+                  }`}
+                >
                   <span className="flex items-center justify-center w-4 h-4 rounded-full bg-emerald-100 dark:bg-emerald-500/20">
                     <Check className="w-2.5 h-2.5 text-emerald-600 dark:text-emerald-400" strokeWidth={3.5} />
                   </span>
@@ -233,18 +238,18 @@ const HeroSection = () => {
             {/* CTA Buttons */}
             <motion.div
               custom={4} {...rise}
-              className="flex flex-wrap gap-3.5 mt-7 justify-center lg:justify-start"
+              className="flex flex-nowrap gap-2 sm:gap-3.5 mt-7 justify-center lg:justify-start"
             >
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-primary to-secondary shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 transition-all duration-300"
+                className="group inline-flex flex-1 lg:flex-none min-w-0 items-center justify-center text-center gap-1.5 sm:gap-2 px-4 sm:px-7 py-2.5 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base text-white bg-gradient-to-r from-primary to-secondary shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 transition-all duration-300"
               >
                 Get Free Consultation
-                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                <ArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link
                 to="/work-process"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold bg-white/80 dark:bg-slate-800/70 backdrop-blur ring-1 ring-slate-900/10 dark:ring-white/10 text-slate-800 dark:text-white hover:ring-primary/60 hover:text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 transition-all duration-300"
+                className="inline-flex flex-1 lg:flex-none min-w-0 items-center justify-center text-center gap-1.5 sm:gap-2 px-4 sm:px-7 py-2.5 sm:py-3.5 rounded-xl font-semibold text-sm sm:text-base bg-white/80 dark:bg-slate-800/70 backdrop-blur ring-1 ring-slate-900/10 dark:ring-white/10 text-slate-800 dark:text-white hover:ring-primary/60 hover:text-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 transition-all duration-300"
               >
                 View Our Process
               </Link>
@@ -265,20 +270,22 @@ const HeroSection = () => {
               {/* Stats + social proof share one row from xl up, where the left
                   column is ~642px against the ~620px this row needs. Below that
                   there isn't room, so it wraps cleanly instead of colliding. */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-5">
-                {SITE_STATS.map((s, i) => (
-                  <div
-                    key={i}
-                    className="shrink-0 pr-4 border-r border-slate-900/[0.08] dark:border-white/10"
-                  >
-                    <p className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
-                      {s.value}
-                    </p>
-                    <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.07em] whitespace-nowrap text-slate-500 dark:text-slate-400">
-                      {s.label}
-                    </p>
-                  </div>
-                ))}
+              <div className="flex flex-col lg:flex-row lg:flex-wrap items-center justify-center lg:justify-start gap-y-4 lg:gap-x-4 lg:gap-y-5">
+                <div className="grid grid-cols-3 gap-x-2 w-full lg:contents">
+                  {SITE_STATS.map((s, i) => (
+                    <div
+                      key={i}
+                      className="text-center lg:text-left lg:shrink-0 lg:pr-4 lg:border-r lg:border-slate-900/[0.08] lg:dark:border-white/10"
+                    >
+                      <p className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                        {s.value}
+                      </p>
+                      <p className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.07em] leading-tight lg:whitespace-nowrap text-slate-500 dark:text-slate-400">
+                        {s.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
 
                 {/* Social proof */}
                 <div className="flex shrink-0 items-center gap-2">
